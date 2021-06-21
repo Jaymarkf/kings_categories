@@ -1,0 +1,605 @@
+
+// Invi 
+.animation-element.invi{
+  opacity: 0;
+}
+
+// FACE IN
+.animation-element.fade-in {
+  opacity: 0;
+  transition: all 1000ms linear;
+}
+
+.animation-element.fade-in.in-view {
+  opacity: 1;
+}
+
+
+
+// SLIDE LEFT
+.animation-element.slide-left {
+  opacity: 0;
+  /*-moz-transition: all 1000ms linear;
+  -webkit-transition: all 1000ms linear;
+  -o-transition: all 1000ms linear;*/
+  transition: all 1000ms linear;
+  
+ /* -moz-transform: translate3d(-100px, 0px, 0px);
+  -webkit-transform: translate3d(-100px, 0px, 0px);
+  -o-transform: translate(-100px, 0px);
+  -ms-transform: translate(-100px, 0px);*/
+  transform: translate3d(-100px, 0px, 0px);
+}
+
+.animation-element.slide-left.in-view {
+  opacity: 1;
+  /*-moz-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);*/
+  transform: translate3d(0px, 0px, 0px);
+}
+
+
+// SLIDE LEFT LONG
+.animation-element.slide-left-long {
+  opacity: 0;
+  transition: all 1000ms linear;
+  transform: translate3d(-300px, 0px, 0px);
+}
+
+.animation-element.slide-left-long.in-view {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+// SLIDE RIGHT
+.animation-element.slide-right {
+  opacity: 0;
+  transition: all 1000ms linear;
+  transform: translate3d(100px, 0px, 0px);
+}
+
+.animation-element.slide-right.in-view {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+
+// SLIDE UP
+.animation-element.slide-up {
+  opacity: 0;
+  transition: all 1000ms linear;
+  transform: translate3d(0px, 100px, 0px);
+}
+
+.animation-element.slide-up.in-view {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+
+// SLIDE UP LONG
+.animation-element.slide-up-long {
+  opacity: 0;
+  transition: all 1000ms linear;
+  transform: translate3d(0px, 300px, 0px);
+}
+
+.animation-element.slide-up-long.in-view {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+
+
+// SLIDE DOWN
+.animation-element.slide-down {
+  opacity: 0;
+  transition: all 1000ms linear;
+  transform: translate3d(0px, -100px, 0px);
+}
+
+.animation-element.slide-down.in-view {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+
+
+// Spring 
+@keyframes spring { 
+  0% {
+    transform: scale(1) translateY(0); 
+  }
+  10% {
+    transform: scale(1.2, 0.6); 
+  }
+  30% { 
+    transform: scale(0.8, 1.1) translateY(-50px); 
+  }
+  50% { 
+    transform: scale(1) translateY(0); 
+  }
+  100% { 
+    transform: translateY(0); 
+  }
+}
+.animation-element.spring.in-view {
+  animation: spring 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+    opacity: 1;
+}
+
+
+// Shake
+.animation-element.shake.in-view {
+	  opacity: 1;
+  animation: shake 0.5s;
+  animation-iteration-count: 2;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+ 
+ 
+ // Spin 
+ 
+ .animation-element.spin.in-view {
+   opacity: 1;
+  animation: spin 0.5s;
+  animation-iteration-count: 3;
+  animation-timing-function: linear; 
+}
+
+ 
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+ 
+ 
+ 
+ // Bounce 
+ 
+ 
+ .animation-element.bounce.in-view {
+	  opacity: 1;
+    animation: bounce 0.5s; 
+    animation-direction: alternate; 
+    animation-timing-function: cubic-bezier(.5, 0.05, 1, .5); 
+    animation-iteration-count: 3; 
+} 
+ 
+ @keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+}
+ 
+ 
+ // Bounce In
+ 
+ .animation-element.bounce-in.in-view {
+	  opacity: 1;
+	animation-name: bounceIn;
+	animation-duration: 450ms;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+@keyframes bounceIn{
+  0%{
+    opacity: 0;
+    transform: scale(0.3) translate3d(0,0,0);
+  }
+  50%{
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  80%{
+    opacity: 1;
+    transform: scale(0.89);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1) translate3d(0,0,0);
+  }
+}
+
+ .animation-element.wiggle.in-view {
+	  opacity: 1;
+  animation: wiggle 0.5s;
+  animation-iteration-count: 5;
+  animation-timing-function: linear; 
+}
+
+ @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   80% { transform: rotate(0deg); }
+   85% { transform: rotate(10deg); }
+   95% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+ 
+ 
+ 
+ 
+
+// Delay
+.animation-element.in-view.delay-100{
+	transition-delay: 100ms;
+	animation-delay: 100ms;
+
+}
+.animation-element.in-view.delay-200{
+	transition-delay: 200ms;
+	animation-delay: 200ms;
+
+}
+.animation-element.in-view.delay-300{
+	transition-delay: 300ms;
+	animation-delay: 300ms;
+}
+.animation-element.in-view.delay-400{
+	transition-delay: 400ms;
+	animation-delay: 400ms;
+
+}
+
+.animation-element.in-view.delay-500{
+	transition-delay: 500ms;
+	animation-delay: 500ms;
+
+}
+
+.animation-element.in-view.delay-600{
+	transition-delay: 600ms;
+	animation-delay: 600ms;
+
+}
+
+.animation-element.in-view.delay-700{
+	transition-delay: 700ms;
+	animation-delay: 700ms;
+
+}
+
+.animation-element.in-view.delay-800{
+	transition-delay: 800ms;
+	animation-delay: 800ms;
+
+}
+
+.animation-element.in-view.delay-900{
+	transition-delay: 900ms;
+	animation-delay: 900ms;
+
+}
+
+.animation-element.in-view.delay-1000{
+	transition-delay: 1000ms;
+	animation-delay: 1000ms;
+}
+
+.animation-element.in-view.delay-1100{
+	transition-delay: 1100ms;
+	animation-delay: 1100ms;
+
+}
+.animation-element.in-view.delay-1200{
+	transition-delay: 1200ms;
+	animation-delay: 1200ms;
+
+}
+.animation-element.in-view.delay-1300{
+	transition-delay: 1300ms;
+	animation-delay: 1300ms;
+}
+.animation-element.in-view.delay-1400{
+	transition-delay: 1400ms;
+	animation-delay: 1400ms;
+
+}
+
+.animation-element.in-view.delay-1500{
+	transition-delay: 1500ms;
+	animation-delay: 1500ms;
+
+}
+
+.animation-element.in-view.delay-1600{
+	transition-delay: 1600ms;
+	animation-delay: 1600ms;
+
+}
+
+.animation-element.in-view.delay-1700{
+	transition-delay: 1700ms;
+	animation-delay: 1700ms;
+
+}
+
+.animation-element.in-view.delay-1800{
+	transition-delay: 1800ms;
+	animation-delay: 1800ms;
+
+}
+
+.animation-element.in-view.delay-1900{
+	transition-delay: 1900ms;
+	animation-delay: 1900ms;
+}
+
+.animation-element.in-view.delay-2000{
+	transition-delay: 2000ms;
+	animation-delay: 2000ms;
+}
+
+.animation-element.in-view.delay-2100{
+	transition-delay: 2100ms;
+	animation-delay: 2100ms;
+
+}
+.animation-element.in-view.delay-2200{
+	transition-delay: 2200ms;
+	animation-delay: 2200ms;
+
+}
+.animation-element.in-view.delay-2300{
+	transition-delay: 2300ms;
+	animation-delay: 2300ms;
+}
+.animation-element.in-view.delay-2400{
+	transition-delay: 2400ms;
+	animation-delay: 2400ms;
+
+}
+
+.animation-element.in-view.delay-2500{
+	transition-delay: 2500ms;
+	animation-delay: 2500ms;
+
+}
+
+.animation-element.in-view.delay-2600{
+	transition-delay: 2600ms;
+	animation-delay: 2600ms;
+
+}
+
+.animation-element.in-view.delay-2700{
+	transition-delay: 2700ms;
+	animation-delay: 2700ms;
+
+}
+
+.animation-element.in-view.delay-2800{
+	transition-delay: 2800ms;
+	animation-delay: 2800ms;
+
+}
+
+.animation-element.in-view.delay-2900{
+	transition-delay: 2900ms;
+	animation-delay: 2900ms;
+
+}
+
+.animation-element.in-view.delay-3000{
+	transition-delay: 3000ms ;
+	animation-delay: 3000ms;
+}
+
+.animation-element.in-view.delay-3100{
+	transition-delay: 3100ms;
+	animation-delay: 3100ms;
+
+}
+.animation-element.in-view.delay-3200{
+	transition-delay: 3200ms;
+	animation-delay: 3200ms;
+
+}
+.animation-element.in-view.delay-3300{
+	transition-delay: 3300ms;
+	animation-delay: 3300ms;
+}
+.animation-element.in-view.delay-3400{
+	transition-delay: 3400ms;
+	animation-delay: 3400ms;
+
+}
+
+.animation-element.in-view.delay-3500{
+	transition-delay: 3500ms;
+	animation-delay: 3500ms;
+
+}
+
+.animation-element.in-view.delay-3600{
+	transition-delay: 3600ms;
+	animation-delay: 3600ms;
+
+}
+
+.animation-element.in-view.delay-3700{
+	transition-delay: 3700ms;
+	animation-delay: 3700ms;
+
+}
+
+.animation-element.in-view.delay-3800{
+	transition-delay: 3800ms;
+	animation-delay: 3800ms;
+
+}
+
+.animation-element.in-view.delay-3900{
+	transition-delay: 3900ms;
+	animation-delay: 3900ms;
+
+}
+.animation-element.in-view.delay-4000{
+	transition-delay: 4000ms ;
+	animation-delay: 4000ms;
+}
+
+.animation-element.in-view.delay-4100{
+	transition-delay: 4100ms;
+	animation-delay: 4100ms;
+
+}
+.animation-element.in-view.delay-4200{
+	transition-delay: 4200ms;
+	animation-delay: 4200ms;
+
+}
+.animation-element.in-view.delay-4300{
+	transition-delay: 4300ms;
+	animation-delay: 4300ms;
+}
+.animation-element.in-view.delay-4400{
+	transition-delay: 4400ms;
+	animation-delay: 4400ms;
+
+}
+
+.animation-element.in-view.delay-4500{
+	transition-delay: 4500ms;
+	animation-delay: 4500ms;
+
+}
+
+.animation-element.in-view.delay-4600{
+	transition-delay: 4600ms;
+	animation-delay: 4600ms;
+
+}
+
+.animation-element.in-view.delay-4700{
+	transition-delay: 4700ms;
+	animation-delay: 4700ms;
+
+}
+
+.animation-element.in-view.delay-4800{
+	transition-delay: 4800ms;
+	animation-delay: 4800ms;
+
+}
+
+.animation-element.in-view.delay-4900{
+	transition-delay: 4900ms;
+	animation-delay: 4900ms;
+
+}
+
+.animation-element.in-view.delay-5000{
+	transition-delay: 5000ms ;
+	animation-delay: 5000ms;
+}
+
+
+
+// Delays Duration
+
+.animation-element.in-view.duration-500{
+	 transition-duration: 500ms ;
+	 animation-duration: 500ms;
+}
+.animation-element.in-view.duration-1000{
+	 transition-duration: 1000ms ;
+	  animation-duration: 1000ms;
+}
+.animation-element.in-view.duration-1500{
+	 transition-duration: 1500ms ;
+	 animation-duration: 1500ms;
+}
+.animation-element.in-view.duration-2000{
+	 transition-duration: 2000ms ;
+	 animation-duration: 2000ms;
+}
+.animation-element.in-view.duration-2500{
+	 transition-duration: 2500ms ;
+	 animation-duration: 2500ms;
+}
+.animation-element.in-view.duration-3000{
+	 transition-duration: 3000ms ;
+	 animation-duration: 3000ms;
+}
+.animation-element.in-view.duration-3500{
+	 transition-duration: 3500ms ;
+	 animation-duration: 3500ms;
+}
+.animation-element.in-view.duration-4000{
+	 transition-duration: 4000ms ;
+	 animation-duration: 4000ms;
+}
+.animation-element.in-view.duration-4500{
+	 transition-duration: 4500ms ;
+	 animation-duration: 4500ms;
+}
+.animation-element.in-view.duration-5000{
+	 transition-duration: 5000ms ;
+	 animation-duration: 5000ms;
+}
+
+
+
+// Iteration ANIMATION
+.animation-element.infinite.in-view {
+  animation-iteration-count: infinite;
+}
+
+.animation-element.ite-1.in-view {
+  animation-iteration-count: 1;
+}
+.animation-element.ite-2.in-view {
+  animation-iteration-count: 2;
+}
+.animation-element.ite-3.in-view {
+  animation-iteration-count: 3;
+}
+.animation-element.ite-4.in-view {
+  animation-iteration-count: 4;
+}
+.animation-element.ite-5.in-view {
+  animation-iteration-count: 5;
+}
+.animation-element.ite-6.in-view {
+  animation-iteration-count: 6;
+}
+.animation-element.ite-7.in-view {
+  animation-iteration-count: 7;
+}
+.animation-element.ite-8.in-view {
+  animation-iteration-count: 8;
+}
+.animation-element.ite-9.in-view {
+  animation-iteration-count: 9;
+}
+.animation-element.ite-10.in-view {
+  animation-iteration-count: 10;
+}
+
+

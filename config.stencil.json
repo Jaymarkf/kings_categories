@@ -1,0 +1,13 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {
+      "category-application.html": "/appliances",
+      "category-landing.html" : ["/refrigerators","/cooking","/dishwashers","/laundry","/bedding"]
+    },
+    "page": {},
+    "product": {}
+  },
+  "normalStoreUrl": "https://kingsgreatbuys.com",
+  "port": 3000
+}

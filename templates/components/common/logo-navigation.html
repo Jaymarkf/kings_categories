@@ -1,0 +1,50 @@
+<nav class="navPages">
+    <div class="navPages-quickSearch">
+        {{> components/common/quick-search}}
+    </div>
+    
+
+    <ul id="myUL" class="navPages-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-list-depth-max{{/if}}">
+        {{#each categories}}
+                
+          
+        
+                
+            {{#if ../theme_settings.navigation_design '===' 'simple'}}
+             {{#all (if name '!==' 'Rebates') (if name '!==' 'Appliances') }}
+            <li class="navPages-item">
+                {{> components/common/navigation-list-new}}
+                 </li>
+                  {{/all}}
+            {{/if}}
+        
+            {{#if ../theme_settings.navigation_design '===' 'alternate'}}
+             {{#all (if name '!==' 'Rebates') (if name '!==' 'Appliances') }}
+            <li class="navPages-item">
+                {{> components/common/navigation-list-alternate}}
+                   </li>
+                  {{/all}}
+            {{/if}}
+        
+  
+        
+        {{/each}}
+            <li class="navPages-item">
+                <a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" href="/brands/">
+                    <img class="nav-image" src="{{getImage (cdn 'img/homepage/Brands.png')}}"  />
+                   <span style="white-space:nowrap">Brands</span>
+                </a>
+            </li>
+        <li class="navPages-item">
+                <a href="/deal-match/" class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}">
+                    <img class="nav-image" src="{{getImage (cdn 'img/homepage/deal-match.png')}}"  />
+                    <span style="white-space: nowrap;">Deal Match</span>
+                </a>
+        </li>
+        
+    
+        
+        
+    </ul>
+
+</nav>

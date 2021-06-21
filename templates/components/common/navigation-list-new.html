@@ -1,0 +1,36 @@
+{{#if children}}
+    <a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" href="{{url}}"><img class="nav-image" src="{{cdn (concat 'img/homepage/' (concat name '.png'))}}"  />
+        <span style="white-space: nowrap;">{{name}}</span>
+    </a>
+    <div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+    <div class="navChild_name">
+        <h2>{{name}}</h2><a class="navPage-subMenu-action navPages-action" href="{{url}}">SHOP ALL  <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/chevron-right-solid-red-.png"></a>
+    </div> 
+        <ul class="nav-children-wImage">
+            {{#each children}}
+                <li>
+                    <img class="imageChildNav" src="{{cdn (concat 'img/nav/' (concat  (lowercase (dashcase name)) '.png'))}}"  />
+                        <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">
+                            {{name}}
+                            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/chevron-right-solid-red-.png">
+                        </a>
+                        <ul class="navPage-childList" id="navPages-{{id}}" >
+                            {{#each children}}
+                                    {{#all (if name '!==' 'Freestanding Smoothtop Electric Range') (if name '!==' '30" Freestanding Coil Electric Range') (if name '!==' 'Slide In Electric Range') (if name '!==' 'Ice Makers') (if name '!==' 'Slide In Gas Range') (if name '!==' 'Upright Freezers') (if name '!==' 'Chest Freezers') (if name '!==' '30" Free Standing Gas Range') (if name '!==' '20" Free Standing Gas Range') (if name '!==' 'Accessories') (if name '!==' 'Built In Microwave') (if name '!==' 'Countertop Microwave') (if name '!==' 'Countertop Microwaves') (if name '!==' 'Over The Range Microwave') (if name '!==' 'Convertible Hoods') (if name '!==' 'Ducted Hood') (if name '!==' 'Ducted Hoods') (if name '!==' 'Ductless Hoods') (if name '!==' 'Professional Hood') }} 
+                                    <li class="navPage-childList-item">
+                                        <a class="navPage-childList-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+                                    </li>
+                                {{/all}}
+                            {{/each}}
+                        </ul>
+                </li>
+            {{/each}}
+        </ul> 
+    </div>
+{{else}}
+    {{#if name '==' 'Delivery Express'}}
+        <a href="/delivery-express/" class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}"><img class="nav-image" src="{{cdn 'assets/img/homepage/delivery-express.png'}}"  /><span style="white-space: nowrap;">{{name}}</span></a>
+    {{/if}}
+{{/if}}
+
+

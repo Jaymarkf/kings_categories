@@ -1,0 +1,9 @@
+<ul class="productList">
+    {{#each wishlist.items}}
+    <li class="product">
+        {{> components/products/list-item-wishlist id=product_id theme_settings=../theme_settings}}
+        
+        
+    </li>
+    {{/each}}
+</ul>

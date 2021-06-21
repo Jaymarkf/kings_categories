@@ -1,0 +1,56 @@
+---
+blog:
+    posts:
+        limit: 5
+        pages: 3
+        summary: 200
+---
+{{#partial "page"}}
+
+<!-- {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} -->
+
+<main class="page kings-page">
+
+    <div class="image-banner">
+        {{#unless theme_settings.hide_blog_page_heading }}
+            <h1 class="page-heading blog-center">{{ blog.name }}</h1>
+        {{/unless}}
+    </div>
+
+<section class="articlecontainer">
+
+
+  <div class="left-half">
+    <article class="sectionarticle">
+         {{#each blog.posts}}
+                {{> components/blog/post post=this anchor_tags=true }}
+            {{/each}}
+
+        <!-- {{> components/common/paginator pagination.blog}} -->
+    </article>
+  </div>
+  <div class="right-half">
+    <article class="Links">
+      <h1>Tags</h1>
+      <div class="sidenav">
+        <a href="https://kingsgreatbuys.com/blog/tag/Appliances">Appliances</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Kitchen">Kitchen</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Cooking">Cooking</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Furniture">Furniture</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Refrigerator">Refrigerator</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Washing">Washing</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Laundry">Laundry</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Bedding">Bedding</a>
+        <a href="https://kingsgreatbuys.com/blog/tag/Electronics">Electronics</a>
+      </div>
+
+
+    </article>
+  </div>
+</section>
+        
+ 
+</main>
+
+{{/partial}}
+{{> layout/blog-base}}

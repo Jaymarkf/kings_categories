@@ -1,0 +1,575 @@
+<script> 
+	$(document).ready(function(){
+	  $(".finance-btn").click(function(){
+	    $("#financing-overlay").show(500);
+	  });
+	  $("#financing-overlay").click(function(){
+	    $("#financing-overlay").hide(500);
+	  });
+	  $(".shipping-btn").click(function(){
+	    $("#shipping-overlay").show(500);
+	  });
+	  $("#shipping-overlay").click(function(){
+	    $("#shipping-overlay").hide(500);
+	  });
+	//     $(".ask-for-price-overlay").click(function(){
+	//     $("#ask-for-price-overlay").show(500);
+	//   });
+	  $(".ask-for-price-exit").click(function(){
+	    $("#ask-for-price-overlay").hide(500);
+	  });
+	});
+</script> 
+<div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
+<section class="productView-details">
+	<div class="productView-product">
+		<!--
+			{{#if product.brand}}
+			  
+			<img class="cardlogoimage" src="{{cdn 'img/brands/Whirlpool.png'}}" onload="this.onload=null; this.src=imgRender('{{product.brand.name}}');" />
+			{{/if}}
+			<script>
+			function imgRender(brand){
+			var img_src =  "{{cdn 'img/Whirlpool.png'}}";
+			return img_src.replace('Whirlpool', brand);
+			}
+			</script>
+			-->
+		<h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+		<p><strong style="color:#757575;">Brand: {{product.brand.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model No.: {{product.sku}}</strong></p>
+{{#if product.price.without_tax.formatted '===' '$999,999.00'}}
+		  <script src ="https://form.jotform.com/static/feedback2.js" type="text/javascript"></script><script type="text/javascript">
+			var JFL_201911524199051 = new JotformFeedback({
+			  formId: '201911524199051',
+			  base: 'https://form.jotform.com/',
+			  windowTitle: 'Request Quotation',
+			  background: '#d22229',
+			  fontColor: '#FFFFFF',
+			  type: '0',
+			  height: 600,
+			  width: 600,
+			  openOnLoad: false
+			});
+		  </script>
+            <a class="btn lightbox-201911524199051 ask-for-price-overlay" style="margin-top: 16px">
+		ASK FOR PRICE
+		  </a>
+		  <!--<a class="ask-for-price-overlay">ASK FOR PRICE</a>-->
+		  {{product.detail_messages}}
+		  <div class="product-features">
+			{{#eachIndex (split product.description '<!-- split -->')}}
+			{{#if index '==' '3' }} 
+			<!-- {{{item}}}<span class="read-more-product-page">more features</span>-->
+			{{{item}}}
+			{{/if}}
+			{{/eachIndex}}
+            </div>
+		<div class="productView-options"></div>
+{{else}}{{#gt product.stock_level 10000}}
+		<div class="productview-price">
+			{{#if product.call_for_price}}
+			<p class="productView-price">
+				<span>{{product.call_for_price}}</span>
+			</p>
+			{{/if}}
+			<div class="productView-price">
+				{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+				{{> components/products/price price=product.price schema_org=schema}}
+				{{else}}
+				{{> components/common/login-for-pricing}}
+				{{/or}}
+			</div>
+			{{{region name="product_below_price"}}}
+            <p class="outofStock_message">Call Us For Estimated Delivery Date.</p>
+		</div>
+		{{product.detail_messages}}
+		<div class="product-features">
+			{{#eachIndex (split product.description '<!-- split -->')}}
+			{{#if index '==' '3' }} 
+			<!-- {{{item}}}<span class="read-more-product-page">more features</span>-->
+			{{{item}}}
+			{{/if}}
+			{{/eachIndex}}
+		</div>
+		<div class="productView-options">
+		{{#if product.release_date }}
+		<p>{{product.release_date}}</p>
+		{{/if}}
+		<form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+			data-cart-item-add>
+			<input type="hidden" name="action" value="add">
+			<input type="hidden" name="product_id" value="{{product.id}}"/>
+			<div class="productview-options-dynamic" data-product-option-change style="display:none;">
+				{{#each product.options}}
+				{{{dynamicComponent 'components/products/options'}}}
+				{{/each}}
+			</div>
+			<div class="productpage-actions flex-div-productActions">
+				<div class="cart-button-productActions">
+					<!--<div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">-->
+					<!--</div>-->
+					{{#if product.can_purchase}}
+					{{> components/products/add-to-cart}}
+					{{/if}}
+					{{#if product.out_of_stock}}
+					{{#if product.out_of_stock_message}}
+					{{> components/common/alert-error product.out_of_stock_message}}
+					{{else}}
+					{{> components/common/alert-error (lang 'products.sold_out')}}
+					{{/if}}
+					{{/if}}
+				</div>
+			</div>
+		</form>
+		{{> components/common/wishlist-dropdown}}
+	</div>
+{{else}}        
+		<div class="productview-price">
+			{{#if product.call_for_price}}
+			<p class="productView-price">
+				<span>{{product.call_for_price}}</span>
+			</p>
+			{{/if}}
+			<div class="productView-price">
+				{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+				{{> components/products/price price=product.price schema_org=schema}}
+				{{else}}
+				{{> components/common/login-for-pricing}}
+				{{/or}}
+			</div>
+			{{{region name="product_below_price"}}}
+		</div>
+		{{product.detail_messages}}
+		<div class="product-features">
+			{{#eachIndex (split product.description '<!-- split -->')}}
+			{{#if index '==' '3' }} 
+			<!-- {{{item}}}<span class="read-more-product-page">more features</span>-->
+			{{{item}}}
+			{{/if}}
+			{{/eachIndex}}
+		</div>
+		<!--
+			<dl class="productView-info">
+			    <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+			    <dd class="productView-info-value" data-product-sku{{#if schema}} itemprop="sku"{{/if}}>{{product.sku}}</dd>
+			    <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
+			    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+			    {{#if schema}}
+			        {{#if product.mpn}}<meta itemprop="mpn" content="{{product.mpn}}" />{{/if}}
+			        {{#if product.gtin}}<meta itemprop="gtin" content="{{product.gtin}}" />{{/if}}
+			    {{/if}}
+			    {{#if product.condition}}
+			        <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
+			        <dd class="productView-info-value">{{product.condition}}</dd>
+			    {{/if}}
+			    {{#if product.availability}}
+			        <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
+			        <dd class="productView-info-value">{{product.availability}}</dd>
+			    {{/if}}
+			    {{#all product.weight theme_settings.show_product_weight}}
+			        <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
+			        <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+			    {{/all}}
+			    {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
+			        <dt class="productView-info-name">{{lang 'products.width'}}</dt>
+			        <dd class="productView-info-value" data-product-width>
+			            {{product.width}}
+			            {{#if settings.measurements.length '==' 'Centimeters'}}
+			            ({{lang 'products.measurement.metric'}})
+			            {{else}}
+			            ({{lang 'products.measurement.imperial'}})
+			            {{/if}}
+			        </dd>
+			        <dt class="productView-info-name">{{lang 'products.height'}}</dt>
+			        <dd class="productView-info-value" data-product-height>
+			            {{product.height}}
+			            {{#if settings.measurements.length '==' 'Centimeters'}}
+			            ({{lang 'products.measurement.metric'}})
+			            {{else}}
+			            ({{lang 'products.measurement.imperial'}})
+			            {{/if}}
+			        </dd>
+			        <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
+			        <dd class="productView-info-value" data-product-depth>
+			            {{product.depth}}
+			            {{#if settings.measurements.length '==' 'Centimeters'}}
+			            ({{lang 'products.measurement.metric'}})
+			            {{else}}
+			            ({{lang 'products.measurement.imperial'}})
+			            {{/if}}
+			        </dd>
+			    {{/all}}
+			    {{#if product.min_purchase_quantity}}
+			        <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
+			        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+			    {{/if}}
+			    {{#if product.max_purchase_quantity}}
+			        <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
+			        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+			    {{/if}}
+			    {{#if product.gift_wrapping_available}}
+			        <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
+			        <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
+			    {{/if}}
+			    {{#if product.shipping}}
+			        {{#if product.shipping.calculated}}
+			            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+			            <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
+			        {{else}}
+			            {{#if product.shipping.price.value '===' 0}}
+			                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+			                <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+			            {{else}}
+			                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+			                <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+			            {{/if}}
+			        {{/if}}
+			    {{/if}}
+			
+			    {{#if settings.bulk_discount_enabled}}
+			        <div class="productView-info-bulkPricing">
+			            {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+			        </div>
+			    {{/if}}
+			
+			    {{#if theme_settings.show_custom_fields_tabs '!==' true}}
+			        {{#each product.custom_fields}}
+			            <dt class="productView-info-name">{{name}}:</dt>
+			            <dd class="productView-info-value">{{{value}}}</dd>
+			        {{/each}}
+			    {{/if}}
+			</dl>
+			-->
+	</div>
+	<div class="productView-options">
+		{{#if product.release_date }}
+		<p>{{product.release_date}}</p>
+		{{/if}}
+		<form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+			data-cart-item-add>
+			<input type="hidden" name="action" value="add">
+			<input type="hidden" name="product_id" value="{{product.id}}"/>
+			<div class="productview-options-dynamic" data-product-option-change style="display:none;">
+				{{#each product.options}}
+				{{{dynamicComponent 'components/products/options'}}}
+				{{/each}}
+			</div>
+			<div class="productpage-actions flex-div-productActions">
+				<div class="cart-button-productActions">
+					<!--<div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">-->
+					<!--</div>-->
+					{{#if product.can_purchase}}
+					{{> components/products/add-to-cart}}
+					{{/if}}
+					{{#if product.out_of_stock}}
+					{{#if product.out_of_stock_message}}
+					{{> components/common/alert-error product.out_of_stock_message}}
+					{{else}}
+					{{> components/common/alert-error (lang 'products.sold_out')}}
+					{{/if}}
+					{{/if}}
+				</div>
+			</div>
+		</form>
+		{{> components/common/wishlist-dropdown}}
+	</div>
+	{{/gt}}
+	{{/if}}
+	<div class="product-mini-logos">
+		<div>
+			<img src="{{getImage image 'thumb_size' (cdn 'assets/img/product-page/store-pickup.png')}}">
+			<div>
+				<p>Free In Store Pickup</p>
+				<span>We offer seamless pickup options.</span>
+			</div>
+		</div>
+		<div>
+			<!--  <img src="{{getImage image 'thumb_size' (cdn 'assets/img/product-page/shipping.png')}}">-->
+			<!-- <div>-->
+			<!-- <p>Free Shipping<a class="shipping-btn" href="#">Details</a></p>-->
+			<!--<span>We offer fast and reliable delivery.</span>-->
+			<!--     </div>-->
+			<div class="apply-financing">
+				<a class="finance-btn" href="#"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/product-page/Financing-01.png')}}"></a>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="productView-images" data-image-gallery>
+	{{!--
+	Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
+	for variant/rule image replacement
+	--}}
+	<div class="imgcontainer-productpage" style="text-align:center;width: 80%;float:right;border: 1px solid #cccccc;">
+		<div style="text-align:center;margin-top:2%;">
+            
+            {{#if product.brand}}
+	
+<!--	<img class="cardlogoimage" src="{{cdn (concat 'img/brands/' (concat brand.name '.jpg'))}}"  />-->
+    
+               <img class='cardlogoimage {{product.sku}}' src=''> 
+   
+                <script>
+                   
+                        
+                    var brandNameProduct = "{{product.brand.name}}";
+                    brandNameLogoProduct = brandNameProduct.replace(/\s+/g, '-').toLowerCase(); 
+                    $("img.{{product.sku}}").addClass(brandNameLogoProduct);
+                    
+          
+                    $(".{{product.sku}}").attr("src", "https://store-bek4r4rsz5.mybigcommerce.com/product_images/uploaded_images/" + brandNameLogoProduct + ".jpg" );
+                    
+                   
+                  
+                  
+                   
+                </script>
+    
+    {{/if}}
+		</div>
+		<div class="product-image">
+			<figure class="productView-image"
+			data-image-gallery-main
+			{{#if product.main_image}}
+			data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+			{{/if}}
+			>
+			<div class="productView-img-container">
+				{{!-- Remove the surrounding a-element if there is no main image. --}}
+				{{#if product.main_image}}
+				<a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
+				target="_blank"{{#if schema}} itemprop="image"{{/if}}>
+				{{/if}}
+				{{> components/common/responsive-img
+				image=product.main_image
+				class="productView-image--default"
+				fallback_size=theme_settings.product_size
+				lazyload=theme_settings.lazyload_mode
+				default_image=theme_settings.default_image_product
+				otherAttributes="data-main-image"
+				}}
+				{{!-- Remove the surrounding a-element if there is no main image. --}}
+				{{#if product.main_image}}
+				</a>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+	</figure>
+	<div style="text-align:center;">
+		<button id="arrowup"><img src="{{cdn 'assets/icons/up-chevron.svg'}}" /></button>
+		<ul class="product-thumbnails" id="inline_navigation" style="overflow: hidden; display: block;">
+			{{#each product.images}}
+			<li>
+				<a
+					class="productView-thumbnail-link"
+					href="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+					data-image-gallery-item
+					data-image-gallery-new-image-url="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+					data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+					data-image-gallery-zoom-image-url="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+					>
+				{{> components/common/responsive-img
+				image=this
+				fallback_size=../theme_settings.productview_thumb_size
+				lazyload=../theme_settings.lazyload_mode
+				}}
+				</a>
+			</li>
+			{{/each}}
+		</ul>
+		<button id="arrowdown"><img src="{{cdn 'assets/icons/down-arrow.svg'}}" /></button>
+	</div>
+	</div>
+	<script>
+		(function($) {
+		$(document).ready(function () {
+		//SLIDE UP
+		jQuery("#arrowup").on("click", function () {
+		  var $ul = $('#inline_navigation');
+		  var y = $ul.scrollTop();
+		  var $firstChild = $ul.children().first();
+		  var step = $firstChild.outerHeight() + parseInt($firstChild.css('marginBottom'),10);
+		  
+		  console.log('before up', y, step);
+		  if (y >= 0) {
+		      y -= step;
+		      console.log('after up', y);
+		      
+		      $ul.stop().animate({
+		          scrollTop: y
+		      }, 100);
+		  }
+		});
+		
+		//SLIDE DOWN
+		$("#arrowdown").on("click", function () {
+		  var $ul = $('#inline_navigation');
+		  var y = $ul.scrollTop();
+		  var h = $ul.height();
+		  var $firstChild = $ul.children().first();
+		  var step = $firstChild.outerHeight() + parseInt($firstChild.css('marginBottom'),10);
+		  
+		  console.log('before down', y, step);
+		  if (h >= y) {
+		      y += step;
+		      console.log('after down', y);
+		      
+		      $ul.stop().animate({
+		          scrollTop: y
+		      }, 100);
+		  }
+		});
+		
+		});
+		}(jQuery));
+	</script>
+</section>
+</div>
+
+
+
+
+<div class="value-proposition">
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/price.png'}}"/>
+		</div>
+		<div>
+			<h3>Unbeatable Prices</h3>
+			<p>
+				Great deals everyday
+			</p>
+		</div>
+	</div>
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/service.png'}}"/>
+		</div>
+		<div>
+			<h3>Great Service</h3>
+			<p>
+				Helpful & Professional
+			</p>
+		</div>
+	</div>
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/selection.png'}}"/>
+		</div>
+		<div>
+			<h3>Wide Selection</h3>
+			<p>
+				Top brands you'll love
+			</p>
+		</div>
+	</div>
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/trust.png'}}"/>
+		</div>
+		<div>
+			<h3>Community Trust</h3>
+			<p>
+				Locally owned & operated
+			</p>
+		</div>
+	</div>
+</div>
+
+{{#each product.custom_fields}}
+    {{#if name '===' 'Giftcard'}}
+    {{#if value '===' 'Yes'}}
+
+<div class="product-page-giftcard-banner">
+   <a href="/contact-us"> <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-gift-card-02-10-2021-2-.png"> </a>
+</div>
+    
+{{/if}}
+{{/if}}
+{{/each}}
+
+
+<div product-description-tabs>
+	<article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
+	{{#if theme_settings.show_product_details_tabs}}
+	{{> components/products/description-tabs}}
+	{{else}}
+	{{> components/products/description}}
+	{{/if}}
+	</article>
+</div>
+<div id="previewModal" class="modal modal--large" data-reveal>
+	<a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+	<span aria-hidden="true">&#215;</span>
+	</a>
+	<div class="modal-content"></div>
+	<div class="loadingOverlay"></div>
+</div>
+<div id="financing-overlay" style="z-index:999;display:none;position:fixed;top:0;left:0;width:100%;height:100%;">
+	<div class="overlay-financing">
+		<h2>Financing</h2>
+		<p>
+			At Kings Great Buys Plus, we greatly honor the needs of our customers. To meet our customers needs, we offer a 
+			wide range of financing options. Whether it is regular financing through lenders such as Wells Fargo or other lending programs 
+			from other sources, we can help you get the electronic, appliance, or furniture item you need.
+		</p>
+		<a href="/financing/">LEARN MORE</a>
+	</div>
+</div>
+<div id="shipping-overlay" style="z-index:999;display:none;position:fixed;top:0;left:0;width:100%;height:100%;">
+	<div class="overlay-shipping">
+		<h2>Free Shipping</h2>
+		<p>
+			King's will deliver all appliance, furniture, or bedding orders of at least $499.99 of value for free within a 20-mile radius of any King's location. 
+			All other purchases will be charged $99.99 for delivery services. Installation services vary on product type and location.
+		</p>
+		<a href="/delivery/">LEARN MORE</a>
+	</div>
+</div>
+<div id="ask-for-price-overlay" style="z-index:999;display:none;position:fixed;top:0;left:0;width:100%;height:100%;">
+	<div class="overlay-financing">
+		<a class="ask-for-price-exit">X</a>
+		<h2>Want a quotation of {{product.title}}?</h2>
+		<form action="mailto:Support@kingsgreatbuys.com" method="post" enctype="text/plain">
+			<div class="form-row form-row--half">
+				<div class="form-field">
+					<input class="form-input" type="text" id="product_name" name="product_name" value="{{product.title}}" readonly>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="product_sku"  name="product_sku" value="{{product.sku}}" readonly>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="fullname" name="fullname" placeholder="Full Name" value="{{customer.name}}" required>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="phone" placeholder="Phone" name="Phone" value="{{customer.phone}}" required>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="email" placeholder="Email" name="Email" value="{{customer.email}}" required>
+				</div>
+				<div class="form-field">
+					<input class="form-input" placeholder="Company" type="text" id="contact_companyname" name="Company" required>
+				</div>
+			</div>
+			<div class="form-field">
+				<textarea name="Comment/Question" id="contact_question" placeholder="Message" rows="5" cols="50" class="form-input"></textarea>
+			</div>
+			<div class="form-actions">
+				<input class="button button--primary" type="submit" value="{{lang 'forms.contact_us.submit' }}">
+			</div>
+		</form>
+	</div>
+</div>
+<!--
+	<script>
+	$(function () {
+	    $('.read-more-product-page').click(function () {
+	        $('#datalist li:hidden').slice(0).show();
+	        if ($('#datalist li').length == $('#datalist li:visible').length) {
+	            $('.read-more-product-page').hide();
+	        }
+	    });
+	});
+	</script>
+	-->

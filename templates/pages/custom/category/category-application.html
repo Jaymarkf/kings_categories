@@ -1,0 +1,216 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<style>
+    .container.categ-container{ max-width: 100% !important;}
+	.body.categ-body { margin:0; }
+	
+</style>
+
+<div class="Promo-Banner" style="background: url('/content/category/images/banner-appliances.png') center;height:28vw;background-position:top;background-size:100vw 28vw;background-repeat: no-repeat;" id="Promo-Banner">
+   
+</div>
+<div class="position-abs">
+    <div class="container-text-banner">
+        <h1 id="title-ban">Appliances</h1>
+        <div class="row" style="text-align:left;">
+            <span style="color:white;font-size:1.7rem;text-align:left;" id="desc">
+                 Pick up or order appliances online here at King’s. <br>We offer both built-in large appliances and small space savers.<br>Fancy a comfortable life with the <br>best appliances from the world’s top consumer electronics makers.
+			</span>
+        </div>
+    </div>
+</div>
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+{{#if category.image}}
+    {{> components/common/responsive-img
+        image=category.image
+        fallback_size=theme_settings.zoom_size
+        lazyload=theme_settings.lazyload_mode
+        class="category-header-image"
+    }}
+{{/if}}
+{{#unless theme_settings.hide_category_page_heading }}
+      
+    
+{{/unless}}
+{{{category.description}}}
+<script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+<div class="page">
+    <style>
+  
+        .category-box{
+            padding:0 !important;
+            border-radius: 0 !important;
+            border: 0px solid white  !important; 
+            margin: 1% 1% !important;
+            position:relative;
+
+        }
+
+      .category-box img.image-hover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  
+    .category-box:hover img.image-hover {
+      opacity: 1;
+    }
+    .category-box:hover .x{
+        display:none !important;
+    }
+    .categ-desc{
+        position:absolute;
+        top:0;bottom:0;right:10px;
+        text-align:center;
+        display:flex !important;align-items: center;
+        margin-right:2%;
+    }
+    html,body{
+        height:100%;
+    }
+
+    </style>
+ <main class="page-content application-content" id="product-listing-container">
+     <a href="/at-t/" style="display:flex;justify-content: center; margin:0 15%;"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/category/categ-banner.jpg')}}"></a>
+          <!-- <h2 class="landing-title"></h2> -->
+
+        <div class="main-landing" style="justify-content: center;margin:0 15%">
+            <div class="category-box">
+                <a href="/refrigerators">
+                    <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/refs.png?t=1623637437&_ga=2.7806394.966636835.1623632807-624579995.1618214792">
+                    <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/ref-flip.png?t=1623396009&_ga=2.226867546.651063522.1623026461-624579995.1618214792">
+                    <div class="categ-desc">
+                        <div>
+                            <h1 class="row x ta">Refrigerators</h1>
+                            <span class="row x tx">
+                                Show our wide variety of refrigerators,<br>freezers, and chillers
+                            </span>
+                        </div>    
+                    </div>
+                </a>
+            </div>
+            
+            <div class="category-box">
+                <a href="/dishwashers">
+                    <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/dishw.png?t=1623637538&_ga=2.12431036.966636835.1623632807-624579995.1618214792">
+                    <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/dishwasher-flip.png?t=1623393764&_ga=2.121086464.966636835.1623632807-624579995.1618214792">
+                    <div class="categ-desc">
+                        <div>
+                            <h1 class="row x ta">Dishwashers</h1>
+                            <span class="row x tx">
+                               Complete your kitchen with a<br> state-of-the-art dishwasher available<br>
+                               in a built-in or portaable configuration.
+                            </span>
+                        </div>    
+                    </div>
+                </a>
+            </div>
+            
+            <div class="category-box">
+                <a href="/cooking">
+                    <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/cooks.png?t=1623637664&_ga=2.48889262.966636835.1623632807-624579995.1618214792">
+                    <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/cooking-flip.png?t=1623393766&_ga=2.29751544.651063522.1623026461-624579995.1618214792">
+                    <div class="categ-desc">
+                        <div>
+                            <h1 class="row x ta">Cooking</h1>
+                            <span class="row x tx">
+                                Buy your cooking appliances here at <br>King's. We haave electric ranges, wall<br>ovens,microwaves,gas ranges,<br>cooktops,and hoods
+                            </span>
+                        </div>    
+                    </div>
+                </a>
+            </div>
+            
+            <div class="category-box">
+                <a href="/laundry">
+                    <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/launds.png?t=1623637662&_ga=2.213828252.966636835.1623632807-624579995.1618214792">
+                    <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/laundry-flip.png?t=1623393771&_ga=2.39228260.651063522.1623026461-624579995.1618214792">
+                </a>
+                <div class="categ-desc">
+                    <div>
+                        <h1 class="row x ta">Laundry</h1>
+                        <span class="row x tx">
+                            With your own washer and<br>dryer machines, doing laundry<br> will be a breeze.
+                        </span>
+                    </div>    
+                </div>
+            </div>
+
+            <!-- <div class="category-box">
+                <a href="/bedding">
+                    <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/bedding-appliances.png?t=1623739427&_ga=2.209225498.966636835.1623632807-624579995.1618214792">
+                    <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/bedding-flip-1-.png?t=1623739640&_ga=2.23644722.966636835.1623632807-624579995.1618214792">
+                </a>
+                <div class="categ-desc">
+                    <div>
+                        <h1 class="row x ta">Bedding</h1>
+                        <span class="row x tx">
+                            Create the ultimate sleep retreat<br>with our bedding collection.
+                        </span>
+                    </div>    
+                </div>
+            </div>
+
+            <div class="category-box">
+                <a href="/electronics">
+                    <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/electronics.png?t=1623747067&_ga=2.83804574.966636835.1623632807-624579995.1618214792">
+                    <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/electronics-flips.png?t=1623746986&_ga=2.87614736.966636835.1623632807-624579995.1618214792">
+                </a>
+                <div class="categ-desc">
+                    <div>
+                        <h1 class="row x ta">Electronics</h1>
+                        <span class="row x tx">
+                            View the world in stunning<br>quality with our 4K Smart TVs<br>or listen to yoru favorite tracks<br>with our cinema-grade<br>sound systems.
+                        </span>
+                    </div>    
+                </div>
+            </div>
+            
+            <div class="category-box">
+                <a href="/furniture">
+                    <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/furniture-application.png?t=1623805791&_ga=2.213839516.966636835.1623632807-624579995.1618214792">
+                    <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/furnitures-fliper.png?t=1623805859&_ga=2.46040364.966636835.1623632807-624579995.1618214792">
+                </a>
+                <div class="categ-desc">
+                    <div>
+                        <h1 class="row x ta">Furniture</h1>
+                        <span class="row x tx">
+                            Shop King's for your home furniture<br>needs that fit across all styles<br>and budgets.
+                        </span>
+                    </div>    
+                </div>
+            </div> -->
+        </div>
+     
+     
+           
+            
+             
+     
+     
+    </main>
+</div>
+{{/partial}}
+{{> layout/category-base}}

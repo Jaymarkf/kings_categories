@@ -1,0 +1,10 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="blog-post-container">
+	{{> components/blog/post post=blog.post show_tags=true}}	
+</div>
+
+
+{{/partial}}
+{{> layout/base}}

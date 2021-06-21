@@ -1,0 +1,75 @@
+<div id="covid101" class="modalcovid101">
+<!--  <span onclick="document.getElementById('covid101').style.display='none'" class="closemodalcovid101" title="Close Modal">×</span>-->
+  <form class="modalcovid101-content">
+    <div style="text-align:center;padding-bottom: 2%;">
+      <h1 style="
+        font-weight: 700;
+    background-color: #d22229;
+    font-size: 30px;
+    margin: 0;
+    color: #fff;
+    padding-top: 1%;
+    padding-bottom: 1%;
+">KINGS COVID 19 ON STOCKS NOTICE</h1>
+      <p style="
+    font-size: 18px;
+    color: #444444;
+    padding: 2% 3% 0 3%;
+">Because of the impact of Covid-19 on the global supply chain, some items may not appear in the store or listed as out of stock. If you are not seeing an item of interest, please contact or visit a local King’s store near you and we’ll be happy to help as much as we can!</p>
+        <a class="modalcovid-button" href="/locations/">FIND A STORE</a>
+    
+
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('covid101');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<nav class="navUser">
+    {{> components/common/currency-selector}}
+<div class="header-text">
+    <span>Missing some items? <button class="covid101button" onclick="document.getElementById('covid101').style.display='block'">Learn more about the effects of COVID-19 on our supplies here.</button></span>
+</div>
+    
+   
+
+
+    
+    <ul class="custom-nav-banner navUser-section navUser-section--alt">
+        
+            <li class="navUser-item">
+            <a class="navUser-action navUser-item--compare" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--positive countPill--alt"></span></a>
+            </li>
+            <li class="navUser-item">
+                <a class="navUser-action" href="/location/">Locations</a>
+            </li>
+            <li class="navUser-item">
+                <a class="navUser-action" href="/disclaimer/">Disclaimer</a>
+            </li>
+            <li class="navUser-item">
+                <a class="navUser-action" href="/rebates/">Rebates</a>
+            </li>
+            <li class="navUser-item">
+                <a class="navUser-action" href="/current-ads/">Current Ads</a>
+            </li>
+            <li class="navUser-item">
+                <a class="navUser-action" href="/blog/">&nbsp; Blog &nbsp;</a>
+            </li>
+            <li class="navUser-item">
+                <a class="navUser-action" href="/contact-us/">Contact Us</a>
+            </li>
+
+    </ul>
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
+        {{> components/common/quick-search}}
+    </div>
+</nav>

@@ -1,0 +1,23 @@
+{{#partial "page"}}
+
+<h1>HELLO WORLD</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("p,h1").click(function(){
+    $(this).hide();
+  });
+});
+</script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+
+
+
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,66 @@
+<article class="blog">
+    <div class="blogpost-figure">
+        {{#if post.thumbnail}}
+            <figure class="blog-banner">
+                {{#if anchor_tags}}
+                <a href="{{post.url}}">
+                {{/if}}        
+                {{> components/common/responsive-img
+                                    image=post.thumbnail
+                                    fallback_size=theme_settings.blog_size
+                                    lazyload=theme_settings.lazyload_mode
+                                }}
+                {{#if anchor_tags}}
+                </a >
+                {{/if}} 
+            </figure>
+        {{/if}}
+    </div>
+
+    <div class="BlogPost-body">
+        <header class="blog-header">
+            <h2 class="title-blog blog-blogtitle">
+                {{#if anchor_tags}}
+                <a href="{{post.url}}">
+                {{/if}}   
+                    {{post.title}}       
+                {{#if anchor_tags}}
+                  </a >
+                {{/if}} 
+            </h2>
+            <p class="blogdate blog-blogdate">{{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}{{post.date_published}}</p>
+        </header>
+
+        <div class="BlogPost-body-paragraph">
+            {{#if post.body}}
+                {{{post.body}}}
+            {{else}}
+                {{{post.summary}}}
+                {{#if post.show_read_more}}
+                    &hellip; <a href="{{url}}">{{lang 'blog.read_more'}}</a>
+                {{/if}}
+            {{/if}}
+        </div>
+
+    </div>
+
+</article>
+    <div class="social-container">   
+        <div class="Leftside">   
+             {{#if show_tags}}
+                {{#if post.tags}}
+                    <ul class="tags">
+                        {{#each post.tags}}
+                        <li class="tag">
+                            <a href="{{url}}">#{{name}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+            {{/if}}
+        </div>
+        <div class="Rightside">   
+            {{>components/common/share}}
+        </div>
+    </div>
+

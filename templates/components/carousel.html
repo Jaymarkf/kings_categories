@@ -1,0 +1,139 @@
+<section class="heroCarousel"
+    data-slick='{
+        "arrows": {{arrows}},
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "autoplay": true,
+        "autoplaySpeed": {{carousel.swap_frequency}},
+        "lazyLoad": "anticipated"
+    }'>
+    
+    
+    
+     
+    
+    {{#each carousel.slides}}
+    <a href="{{url}}">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            {{#if @first}}
+                {{> components/common/responsive-img
+                    image=stencil_image
+                    class="heroCarousel-image"
+                    fallback_size='1280w'
+                    lazyload='disabled'
+                }}
+            {{else}}
+                {{> components/common/responsive-img
+                    image=stencil_image
+                    class="heroCarousel-image"
+                    fallback_size='1280w'
+                    lazyload='lazyload'
+                }}
+            {{/if}}
+            </div>
+            {{#if heading}}
+                {{> components/carousel-content show_background=true}}
+            {{else}}
+                {{#if text}}
+                    {{> components/carousel-content show_background=true}}
+                {{else}}
+                    {{#if button_text}}
+                        {{> components/carousel-content show_background=false}}
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </a>
+    {{/each}}
+    
+    
+    <a href="/#/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/bannerad-app.jpg" alt="" />
+            </div>
+        </div>
+    </a>
+    
+     <a href="/#/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/bannerad-check.jpg" alt="" />
+            </div>
+        </div>
+    </a>
+    
+    <a href="/#/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/bannerad-mattress.jpg" alt="" />
+            </div>
+        </div>
+    </a>
+    
+    
+    
+    <a href="/giftcard/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/king-gift-card.png" alt="" />
+            </div>
+        </div>
+    </a>
+    
+     <a href="/giftcard/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-productpage-gift-card.jpg" alt="" />
+            </div>
+        </div>
+    </a>
+    
+    <a href="/bosch/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-banner-bosch.jpg" alt="" />
+            </div>
+        </div>
+    </a>
+    
+    <a href="/whirlpool/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/theme_images/Kings_Banner-Whirlpool.png" alt="" />
+            </div>
+        </div>
+    </a>
+    
+     <a href="/lg/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/theme_images/Kings_Banner-LG.png" alt="" />
+            </div>
+        </div>
+    </a>
+    
+        
+    <a href="/maytag/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-banner-maytag.jpg" alt="" />
+            </div>
+        </div>
+    </a>
+    
+     <a href="/hisense/">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
+            <img src="{{cdn 'assets/img/hisense/Hisense-banner.png'}}" alt="" />
+            </div>
+        </div>
+    </a>
+    
+    
+    
+    
+
+</section>
