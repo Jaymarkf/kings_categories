@@ -216,6 +216,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    width:30%;
+    vertical-align:middle;
+    .price-container-with-now{
+        display:flex;
+    
+
+    }
 
     .list-action-container{
         padding:3rem;
@@ -228,11 +235,16 @@
         .button--compare {
             @include buttonSize("small");
         }
+        
+
+
+            
     }
 
     .button {
         margin-bottom: 0;
-
+        width:100%;
+        font-family: 'Roboto' , sans-serif;
         @include breakpoint("large") {
             width: 100%;
 
@@ -241,6 +253,19 @@
                 margin: spacing("half") 0 0;
             }
         }
+    }
+    .sub-button{
+        background: linear-gradient(to right, rgb(210, 34, 41) 50%, rgb(255, 201, 203) 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        transition: all .2s;
+
+        margin: spacing("half") 0 0;
+        &:hover{
+            background-position: left bottom;
+            color:white !important;
+        }
+        
     }
 }
 //compare js

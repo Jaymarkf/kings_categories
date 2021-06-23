@@ -302,7 +302,7 @@ class Collapse {
     if(window.location.href.indexOf('#') > 0 ){
       this.openSinglePanel(this._panels[3]);
       var el = document.getElementById('#rebate');
-      el.scrollIntoView();
+      el.scrollIntoView({block: "start"});
      
 
 

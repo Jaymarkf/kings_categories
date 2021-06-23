@@ -51,6 +51,79 @@ ul.productList>li.product {
 .product{
 	display:flex;
 	justify-content: space-around;
+	-webkit-transition: all 1.5s ease;
+	-moz-transition: all 1.5s ease;
+	-o-transition: all 1.5s ease;
+	transition: all 1.5s ease;
+	@media(max-width:1000px){
+		.button--small{
+			font-size:10px;
+		}	
+	}
+	@media(max-width:660px){
+		.list-action-container{
+			padding:1rem;
+		}	
+	}
+	@media(max-width:1161px){
+		.price-container-with-now{
+			display:block !important;
+			.now-responsive{
+				display:flex;
+				justify-content: center !important;
+				flex-direction: inherit !important;
+			}
+		}
+	}
+
+
+}
+.grid-view{
+	-webkit-transition: all 1.5s ease;
+	-moz-transition: all 1.5s ease;
+	-o-transition: all 1.5s ease;
+	transition: all 1.5s ease;
+	float:left;
+	width:40%;
+	margin:5% !important;
+	border:1px none !important;
+	// border-bottom: 1px solid gray !important;
+	display:block;
+	margin-top:0 !important;
+	@media(max-width:450px){
+		width:100%;
+		margin:6%;
+	}
+	figure.listItem-figure{
+		text-align:center;
+	}
+	figure.listItem-figure > img{
+		padding:0px !important;
+		width:auto !important;
+		
+	}
+	.listItem-details{
+		width:100%;
+		display:block;
+		text-align:center;
+		padding-left:5.5%;
+		padding-right:5.5%;
+		.listItem-title{
+			width:100%;
+		}
+	}
+	.listItem-actions{
+		width:100% !important;
+		.list-action-container{
+			border:none;
+			padding-top:0;
+		}
+		.price-container-with-now{
+			justify-content: space-around;
+		}
+	}
+
+
 }
 
 .list-ummary {
@@ -262,10 +335,16 @@ span.price-now-label {
 }
 
 span.price.price--saving {
-	background: #0ac212;
-	color: #fff;
+	// background: #0ac212;
+	color: #0ac212;;
 	font-size: 15px;
 	padding: 2px 4px 2px 4px;
+}
+span.price-was{
+	font-size:1rem !important;
+	@media(max-width:1202px){
+		font-size:0.9rem !important;
+	}
 }
 
 .listItem-price>.price-section.price-section--saving.price {
@@ -296,7 +375,9 @@ img.cardlogoimage {
 .categoryID-300 {
 	display: none !important;
 }
-
+span.was{
+	color:#666666;
+}
 p.on-stack {
 	color: #0ac212;
 	font-weight: 600;
@@ -310,7 +391,8 @@ p.on-stack {
 
 a.button.button--small {
 	font-weight: 600;
-	font-size: 15px;
+	// font-size: 15px;
+	padding:13px;
 }
 
 .express-container span.price-now-label {
