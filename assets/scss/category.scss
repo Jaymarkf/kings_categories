@@ -45,7 +45,12 @@ a.button.button--small {
 }
 
 ul.productList>li.product {
-	border-bottom: 1px solid #cccccc;
+	border-bottom: 1px solid #ffffff;
+}
+//product
+.product{
+	display:flex;
+	justify-content: space-around;
 }
 
 .list-ummary {
@@ -83,8 +88,9 @@ ul.productList>li.product {
 }
 
 figure.listItem-figure>img {
-	border: 1px solid #cccccc;
-	padding: 5px;
+	border: 1px solid #ffffff;
+	padding: 38px;
+	padding-right: 0;
 	width: 240px;
 	object-fit: scale-down;
 	height: 240px;
@@ -280,7 +286,7 @@ span.price.price--saving {
 }
 
 img.cardlogoimage {
-	margin-bottom: 2%;
+	// margin-bottom: 2%;
 }
 
 .express-container .listItem-price {

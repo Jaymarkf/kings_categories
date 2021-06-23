@@ -674,6 +674,7 @@
         }
     },
     "products": {
+        "wishlist":"ADD TO WISHLIST",
         "current_stock": "Current Stock:",
         "quantity": "Quantity:",
         "quantity_decrease": "Decrease Quantity:",
@@ -719,7 +720,8 @@
             "hide": "Hide Videos",
             "show": "Show Videos"
         },
-        "add_to_cart": "Add to Cart",
+        "check_rebate_available" : "CHECK REBATE AVAILABLE",
+        "add_to_cart": "ADD TO CART",
         "adding_to_cart": "Adding to cart…",
         "options": "Options",
         "none": "None",
@@ -733,7 +735,7 @@
         "shipping_calculated": "Calculated at Checkout",
         "sold_out": "Sold Out",
         "pre_order": "Pre-Order Now",
-        "choose_options": "Choose Options",
+        "choose_options": "CHOOSE OPTIONS",
         "quick_view": "Quick view",
         "compare": "Compare",
         "max_filesize": "Maximum file size is",

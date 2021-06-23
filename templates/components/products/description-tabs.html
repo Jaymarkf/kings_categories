@@ -64,9 +64,9 @@
     {{#if name '===' 'Rebate IDs'}}
     {{#if value '===' '0'}}
     {{else}}
-    <details>
+    <details id="#rebate">
     <summary><a><i class="fas fa-tag"></i>Rebates</a></summary>
-    <div class="details-wrapper">   
+    <div class="details-wrapper" >   
          <div class="details-styling">
              <!--<div id="bc-rebate">-->
              <!--    <table id="rebate-table" class="display" width="100%"></table>-->
@@ -146,10 +146,9 @@ class Collapse {
     }
     
     this.settings = Object.assign({}, defaults, options);
-    
+   
     this._container = container;
     this._panels = container.querySelectorAll("details");
-    
     this.events = {
       openingPanel: new CustomEvent('openingPanel'),
       openedPanel: new CustomEvent('openedPanel'),
@@ -157,51 +156,39 @@ class Collapse {
       closedPanel: new CustomEvent('closedPanel'),
     };
   }  
-
   // Sets height of panel content
   _setPanelHeight( panel ) {
     let contents = panel.querySelector("summary + *");
-    
     contents.style.height = contents.scrollHeight + "px";
   }
-
   // Removes height of panel content
   _removePanelHeight( panel ) {
-    let contents = panel.querySelector("summary + *");
-    
+    let contents = panel.querySelector("summary + *"); 
     contents.style.height = null;
   }
-  
   //=== Open panel
   open(panel) {
     panel.dispatchEvent( this.events.openingPanel );
-
     panel.open = true;
   }
-
   // Add height and active class, this triggers opening animation
   _afterOpen(panel) {
     this._setPanelHeight(panel);
     panel.classList.add(this.settings.activeClass);
   }
-
   // Remove height on animation end since it's no longer needed
   _endOpen(panel) {
     panel.dispatchEvent( this.events.openedPanel );
-    
     this._removePanelHeight(panel);
   }
-  
   //=== Close panel, not toggling the actual [open] attr!
   close(panel) {
     panel.dispatchEvent( this.events.closingPanel );
     this._afterClose(panel);
   }
-  
   // Set height, wait a beat, then remove height to trigger closing animation
   _afterClose(panel) {
     this._setPanelHeight(panel);
-
     setTimeout(() => {
       panel.classList.remove(this.settings.activeClass);
       this._removePanelHeight(panel);
@@ -309,7 +296,17 @@ class Collapse {
     this._attachEvents();
     
     // If accordion, open the first panel
-    if (this.settings.accordion) {
+    // if (this.settings.accordion) {
+    //   this.openSinglePanel(this._panels[0]);
+    // }
+    if(window.location.href.indexOf('#') > 0 ){
+      this.openSinglePanel(this._panels[3]);
+      var el = document.getElementById('#rebate');
+      el.scrollIntoView();
+     
+
+
+    }else{
       this.openSinglePanel(this._panels[0]);
     }
     
@@ -321,7 +318,7 @@ class Collapse {
 }
 
 let makeMePretty = document.querySelector(".collapse");
-let accordion = new Collapse(makeMePretty, { accordion: true }).init();
+let accordion = new Collapse(makeMePretty, { accordion: true }).init(); 
 
 // Toggle accordion behavior
 document.querySelector("#accordion-toggle")

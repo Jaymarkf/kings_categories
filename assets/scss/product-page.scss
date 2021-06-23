@@ -1,5 +1,5 @@
 
-    
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
     .productView-brand {
     font-size: 20px;
     margin: 0;
@@ -292,7 +292,7 @@ i.far {
     img.cardlogoimage {
     max-width: 100px;
     max-height: 50px;
-	margin-left:2%;
+	// margin-left:2%;
 }
     .productpage-actions > div > .form-field > .form-label {
     margin: 0;
@@ -714,9 +714,13 @@ div[data-product-attribute=set-rectangle]>.form-option {
     .productView-reviewLink > a {
     text-decoration: none;
 }
+
     .price-section.price-section--withoutTax>span.price.price--withoutTax {
+        
     color: #222222;
     font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-size:2rem;
 }
     .productView-price > .price-section.price-section--withoutTax>span.price.price--withoutTax {
     font-size: 30px;
