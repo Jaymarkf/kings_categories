@@ -76,7 +76,7 @@
 					{{#if show_compare}}
 					<label class="button button--small xx" for="compare-{{id}}" style="padding:0 !important;">
 						<div style="display:flex;justify-content: center;align-items:center;">
-							<input type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}" style="margin-right:2%;margin-top:0px;">
+							<input class="cmp" type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}" style="margin-right:2%;margin-top:0px;">
 							 <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/compare-icon.png?t=1624248002&_ga=2.94277407.308044551.1624238785-624579995.1618214792" alt="compare icon" width="15" style="margin-left:3%;">
 							<span style="white-space: nowrap;margin-left:7%;">{{lang "ADD TO COMPARE"}}</span>
 						</div>
@@ -85,7 +85,7 @@
 				</div>
 			</div>
 			{{else}}
-            {{#gt stock_level 10000}}
+            		{{#gt stock_level 10000}}
 			<div class="listItem-actions">
 				<div class="list-action-container">
 					{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
@@ -102,13 +102,13 @@
 						{{#if add_to_cart_url }}
 							<a href="{{add_to_cart_url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small">{{lang 'products.add_to_cart'}}</a>
 						{{/if}}
-						<a href="{{add_to_wishlist_url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small sub-button" style="color: #f00;background-color: #fde8e8;border:none;">{{lang 'products.wishlist'}}</a>
+				
 					{{/if}}
 					<a href="{{add_to_wishlist_url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small sub-button" style="color: #f00;background-color: #fde8e8;border:none;">{{lang 'products.wishlist'}}</a>
 					{{#if show_compare}}
 					<label class="button button--small xx" for="compare-{{id}}" style="padding:0 !important;">
 						<div style="display:flex;justify-content: center;align-items:center;">
-							<input type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}" style="margin-right:2%;margin-top:0px;height:0;">
+							<input class="cmp" type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}" style="margin-right:2%;margin-top:0px;height:0;">
 							 <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/compare-icon.png?t=1624248002&_ga=2.94277407.308044551.1624238785-624579995.1618214792" alt="compare icon" width="15" style="margin-left:3%;">
 							<span style="white-space: nowrap;margin-left:7%;">{{lang "ADD TO COMPARE"}}</span>
 						</div>
