@@ -60,7 +60,7 @@ If you are making a change here or in price-range.html, you probably want to mak
                 {{theme_settings.pdp-price-label}}
             </span>
            
-            <div class="price-container-with-now">
+            <div class="price-container-with-now" {{#if price.saved}}{{else}} style="justify-content: center;" {{/if}}>
                 <div class="now-responsive" style="display:flex;flex-direction: column;align-items: flex-start;">
                     <span class="price-now-label left" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}}>
                         Now

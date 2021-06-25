@@ -1,15 +1,14 @@
 <div class="maincontainer-compare">
          <div class="child-container-compare" style="display:none">
-                  
                   <div class="action" style="display:flex;flex-direction:column;text-align:center;border:none !important;display:none;">
                            <h4 style="margin-top:0;font-size:18px !important;" id="h4-compare"></h4>
                            <div style="display:block;width:100%;">
                                     <button style="color:white;background-color:#d22229; padding: 18px;font-size: 17px;border-radius: 11px;" id="btn-compare-now" onclick="submit_url()">COMPARE</button>
                            </div>
                            <div style="display:block;text-align:center;margin-top:20px;">
-                                    <span style="text-decoration: underline;cursor: pointer;">
+                                    <button style="text-decoration: underline;cursor: pointer;" onclick="reset()">
                                              Clear All
-                                    </span>
+                                    </button>
                            </div>
                   </div>   
          </div>     
@@ -58,11 +57,8 @@
                                     check_count--;
                         }
                   } 
-           
          });
          function delete_parent(elem){
-              
-
                   let id =    elem.getAttribute('delete-id');
                   $('#compare-sticky-'+id).remove();
                   var index_remove = arr_product.indexOf(id);
@@ -77,11 +73,14 @@
                    }
                   //uncheck the checkbox
          }
-
          function submit_url(){
                   var data = arr_product.toString();
                   var regex = data.replace(/,/g,"");
                   window.location.href = "/compare"+regex;
+         }
+         function reset(){
+               $('.cmp').prop('checked',false);
+               $('.child-container-compare').remove();
 
-         }        
+         }
 </script>

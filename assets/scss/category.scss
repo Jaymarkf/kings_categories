@@ -83,12 +83,13 @@ ul.productList>li.product {
 	-moz-transition: all 1.5s ease;
 	-o-transition: all 1.5s ease;
 	transition: all 1.5s ease;
-	float:left;
-	width:40%;
+	// float:left;
+	width:39%;
 	margin:5% !important;
 	border:1px none !important;
 	// border-bottom: 1px solid gray !important;
-	display:block;
+	display:inline-block;
+	position:relative;
 	margin-top:0 !important;
 	@media(max-width:450px){
 		width:100%;

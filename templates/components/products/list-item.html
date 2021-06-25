@@ -22,13 +22,7 @@
 	</figure>
 	<div class="listItem-details">			
                  {{#if brand.name}}
-			<img class='cardlogoimage {{sku}}' src=''> 
-			<script>       
-				var brandName = "{{brand.name}}";
-				brandNameLogo = brandName.replace(/\s+/g, '-').toLowerCase(); 
-				$("img.{{sku}}").addClass(brandNameLogo);
-				$(".{{sku}}").attr("src", "https://store-bek4r4rsz5.mybigcommerce.com/product_images/uploaded_images/" + brandNameLogo + ".jpg" );         
-			</script>
+			<img  alt="" class="cardlogoimage {{sku}} lazyload" src="/product_images/uploaded_images/{{toLowerCase (dashcase brand.name)}}.jpg">
    		{{/if}} 
 		<h4 class="listItem-title">
 			<a style="-webkit-box-orient: vertical;" href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
@@ -41,11 +35,31 @@
 		<p style="color:#757575;margin-bottom:.3rem;">
 			<strong>{{sku}}</strong>
 		</p>
-		{{#if summary}}
-			<div class="list-summary">
-				<p class="fword">Dimension: 0</p>
-			</div>
-		{{/if}}         
+
+		{{assignVar 'has_dimension' 0 }}				
+		{{#each custom_fields}}
+			{{#inArray (split "Height,Width,Depth" ",")  name }}
+				{{#all (if (length value) '>' 0) (if (getVar 'has_dimension') '==' 0 ) }}
+					<div class="list-summary">	
+					<label><strong>Dimension:</strong></label>
+						<span class="fword">
+						{{#each ../../../custom_fields}}
+							{{#inArray (split "Height,Width,Depth" ",")  name }}
+								{{#if (length value) '>' 0 }}
+									{{#if (getVar 'has_dimension') '==' 1 }} x {{/if}}		
+									{{truncate name 1}} {{value}} in
+									{{assignVar 'has_dimension' 1 }}
+								{{/if}}				 
+							{{/inArray}}		
+						{{/each}}
+						</span>
+					</div>
+					{{assignVar 'has_dimension' 1 }}
+				{{/all}}				 
+			{{/inArray}}		
+		{{/each}}
+	
+
 		<div class="productView-options">
 			<div data-product-option-change style="display:none;">
 				{{#each options.name}}
