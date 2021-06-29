@@ -29,7 +29,7 @@
                   let product_price = $(this).parents('li.product').children().eq(2).find('span.ptax').html();
                   let id = $(this).attr('data-compare-id');
                   var html ='';
-                  var len = $('.cmp:checked').length;
+                  var check_count = $('input[type="checkbox"]:checked').length;
                   // var actions = '<div class="action" style="display:flex;flex-direction:column;text-align:center;border:none !important;display:none;"><h4 style="margin-top:0;font-size:18px !important;">Comparing ('+len+') Products</h4></div>';       
                   // var action = '<h4 style="margin-top:0;font-size:18px !important;">Comparing ('+len+') Products</h4>';
                   var elem = $('.child-container-compare');
@@ -41,37 +41,42 @@
                   if(this.checked){
                            arr_product.push("/"+id);
                            elem.prepend(html);
-                           if(len > 1){
-                                   $('#h4-compare').html('Comparing ('+len+') Products');
+                           if(check_count > 1){
+                                   $('#h4-compare').html('Comparing ('+check_count+') Products');
                                    $('.action').css('display','block');
                            }  
-                           check_count++; 
                   }else{
+                        $('#compare-sticky-'+id).remove();
                         var index_remove = arr_product.indexOf(id);
                         arr_product.splice(index_remove,1);
+                       
                         if(check_count < 2){
                                     $('.action').css('display','none');
                         }else{
-                                    check_count--;
-                                    $('#compare-sticky-'+id).remove();
                                     $('#h4-compare').html('Comparing ('+check_count+') Products');
-                                      
-                                
+                        }
+                        if(check_count == 0){
+                              $('.child-container-compare').css('display','none');
                         }
                   } 
          });
          function delete_parent(elem){
+                  
                   let id =    elem.getAttribute('delete-id');
                   $('#compare-sticky-'+id).remove();
                   var index_remove = arr_product.indexOf(id);
                   arr_product.splice(index_remove,1);
                   //unchecked the checkedbox
-                  check_count--;
+                
                   $('#compare-'+id).prop('checked',false);
+                  var check_count = $('input[type="checkbox"]:checked').length;
                    if(check_count < 2){
                             $('.action').css('display','none');
                    }else{
                             $('#h4-compare').html('Comparing ('+check_count+') Products');
+                   }
+                   if(check_count == 0){
+                         $('.child-container-compare').css('display','none');
                    }
                   //uncheck the checkbox
          }
@@ -84,6 +89,7 @@
                $(".cmp").prop('checked',false);
                $('.action').css('display','none');
                $('.compare-sticky').remove();
-              check_count = $('input[type="checkbox"]:checked').length;
+               check_count = $('input[type="checkbox"]:checked').length;
+               $('.child-container-compare').css('display','none');
          }
 </script>
