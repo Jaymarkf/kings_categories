@@ -78,6 +78,15 @@ ul.productList>li.product {
 
 
 }
+.delivery-express{
+	width: 100px !important;
+	position: absolute !important;
+	top: 0 !important;
+	right: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	height: 30px !important;	
+}
 .grid-view{
 	-webkit-transition: all 1.5s ease;
 	-moz-transition: all 1.5s ease;
@@ -91,6 +100,10 @@ ul.productList>li.product {
 	display:inline-block;
 	position:relative;
 	margin-top:0 !important;
+	.delivery-express{
+		height: 45px !important;	
+
+	}
 	@media(max-width:450px){
 		width:100%;
 		margin:6%;

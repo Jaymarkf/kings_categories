@@ -304,28 +304,8 @@
 		<div style="text-align:center;margin-top:2%;">
             
             {{#if product.brand}}
-	
-<!--	<img class="cardlogoimage" src="{{cdn (concat 'img/brands/' (concat brand.name '.jpg'))}}"  />-->
-    
-               <img class='cardlogoimage {{product.sku}}' src=''> 
-   
-                <script>
-                   
-                        
-                    var brandNameProduct = "{{product.brand.name}}";
-                    brandNameLogoProduct = brandNameProduct.replace(/\s+/g, '-').toLowerCase(); 
-                    $("img.{{product.sku}}").addClass(brandNameLogoProduct);
-                    
-          
-                    $(".{{product.sku}}").attr("src", "https://store-bek4r4rsz5.mybigcommerce.com/product_images/uploaded_images/" + brandNameLogoProduct + ".jpg" );
-                    
-                   
-                  
-                  
-                   
-                </script>
-    
-    {{/if}}
+	       <img class="cardlogoimage {{sku}} " src="/product_images/uploaded_images/{{toLowerCase (dashcase product.brand.name)}}.jpg">
+    		{{/if}}
 		</div>
 		<div class="product-image">
 			<figure class="productView-image"

@@ -104,7 +104,7 @@
 				<div class="list-action-container">
 					{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
 						{{#if price}}
-							<div class="listItem-price">{{> components/products/price price=price}}</div>
+							<div class="listItem-price">{{> components/products/price price=price is_category=true}}</div>
 						{{/if}}
 					{{else}}
 						{{> components/common/login-for-pricing}}
@@ -135,7 +135,7 @@
 					<div class="list-action-container">
 						{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
 						{{#if price}}
-						<div class="listItem-price">{{> components/products/price price=price}}</div>
+						<div class="listItem-price">{{> components/products/price price=price is_category=true}}</div>
 						{{/if}}
 						{{#if show_cart_action}}
 							{{#if has_options}}
