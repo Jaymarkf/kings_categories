@@ -41,7 +41,7 @@
 			{{#inArray (split "Height,Width,Depth" ",")  name }}
 				{{#all (if (length value) '>' 0) (if (getVar 'has_dimension') '==' 0 ) }}
 					<div class="list-summary">	
-					<label><strong>Dimension:</strong></label>
+					<label><strong>Dimensions:</strong></label>
 						<span class="fword">
 						{{#each ../../../custom_fields}}
 							{{#inArray (split "Height,Width,Depth" ",")  name }}

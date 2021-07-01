@@ -1,5 +1,8 @@
 <section class="productView-details">
     <div class="productView-product">
+        <div class="product-badge">
+            testing
+        </div>
         <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
         {{#if product.brand }}
         <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>

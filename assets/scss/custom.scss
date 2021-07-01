@@ -305,7 +305,9 @@ ul.footer-info-list.company-info {
 }
 
 nav.navUser {
-    background: #d22229;
+    background: #bc1e25;
+    //29/06/2021
+    font-size:12px;
 }
 
 
@@ -444,16 +446,27 @@ ul.custom-nav-banner.navUser-section.navUser-section--alt > li:last-child> a.nav
 }
 
 .header-logo.header-logo--center {
-    margin-top: 1%;
-    margin-bottom: 1%;
+    // margin-top: 1%;
+    // margin-bottom: 1%;
+    padding-top:1%;
+    padding-bottom:1%;
+    background-color:#d22229;
+    .navigation_icons{
+        font-size:28px;
+        color:white;
+    }
 }
-
 
 .header-logo-section > div > .form {
     margin: 0;
-    border: 1px solid #bbbbbb;
-    border-radius: 0 10% 10% 0;
+    border: 3px solid #ffffff;
+    // border-radius: 0 10% 10% 0;
+    border-radius: 5px;
     width: 100%;
+    //form input radius
+    .form-input {
+        border-top-left-radius: none;
+    }
 }
 .header-logo-section > div > .form > .form-fieldset > .form-field > .form-prefixPostfix > .form-input {
     border: none;
@@ -480,8 +493,23 @@ ul.custom-nav-banner.navUser-section.navUser-section--alt > li:last-child> a.nav
 li.navUser-item {
     display: flex;
     align-items: center;
+    flex-direction: column;
+  
+   
 }
+.header-logo-section{
+    .navUser-item{
+        .navUser-action{
+            padding-top:1% !important;
+            }
+    }
+}
+nav.navUser ul.navUser-section .navUser-item{
+    .fa{
+        font-size:35px;
+    }
 
+}
 
 
 .form-prefixPostfix .form-input {
@@ -796,8 +824,8 @@ a.navPages-action {
     text-decoration: none;
 }
 ul.navPages-list > li.navPages-item {
-    border-right: 1px solid #cccccc;
-    padding: 0 15px 0 15px;
+    // border-right: 1px solid #cccccc;
+    padding: 0 5px 0 5px;
 }
 
 ul.navPages-list > li.navPages-item:last-child {
@@ -1215,10 +1243,6 @@ a.directions-button {
 .overlay-shipping a{color:#fff;font-weight:700;font-size:18px;background:#d12229;border-radius:5px;padding:10px 20px;text-decoration:none;}
 .overlay-financing a{color:#fff;font-weight:700;font-size:18px;background:#d12229;border-radius:5px;padding:10px 20px;text-decoration:none;}
 
-
-
-
-
 a.navPages-action {
     display: table-caption;
 }
@@ -1228,7 +1252,13 @@ a.navPages-action {
     width: 80%;
     right: 10%;
     left: 10%;
-    box-shadow: 1px 1px 3px black; 
+    box-shadow: 1px 1px 3px black;
+    border-radius: 5px solid red;
+    border-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 5px solid #d40000;
+
 }
 #menu .navPages ul.navPages-list > li.navPages-item:hover > a + #navPages-24 {
     display: inline-block;
@@ -1882,7 +1912,25 @@ p.outofStock_message {
     text-align: center;
 }
 
-
+// main product
+.productView-product{
+    .product-badge{
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        img{
+            height:100%;
+        }
+        .financing-div{
+            display:flex;
+            align-items:center;
+            span{
+                padding-left:5%;
+                font-size:1.2rem; line-height:1.3rem;
+            }
+        }
+    }
+}
 
 
 
@@ -2082,9 +2130,12 @@ ul.nav-children-wImage > li > a.navPage-subMenu-action.navPages-action {
     max-width: 185px;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
+    justify-content:center;
     font-size: 13px;
+    margin-left:3%;
 }
+
 img.imageChildNav {
     border: 1px solid #cccccc;
 }
@@ -2164,7 +2215,7 @@ ul.navPage-childList {
 
 div#navPages-24 ul.nav-children-wImage li a.navPage-subMenu-action.navPages-action {
     display: flex!important;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 3%;
     border-bottom: 1px solid #333333;
@@ -2543,6 +2594,15 @@ img.lazyautosizes.ls-is-cached.lazyloaded {
 			span{ 
 				white-space:nowrap;
 				white-space: pre;
+                font-size: 2.5vw;
+                color:#333333;
+                @include breakpoint("medium"){
+                    color:white;
+                    white-space:nowrap;
+                    white-space: pre;
+                    font-size: 0.9vw;
+                    color:#333333;
+                }
 			}
 		}
 	}

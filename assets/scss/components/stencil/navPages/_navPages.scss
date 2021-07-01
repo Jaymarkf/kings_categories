@@ -70,15 +70,15 @@
     background-color: $navPages-backgroundColor;
     height: 100%;
     overflow-y: auto;
-    padding: spacing("single");
-
+    padding: spacing("half");
+    
     @include breakpoint("medium") {
         @include grid-row(); // 1
         @include nav($style: "navBar", $wrapper: "nav");
         background: none;
         font-size: 0; // 1
         overflow-y: visible;
-        padding: 0;
+        padding: spacing("quarter");;
         text-align: center;
     }
 
@@ -196,7 +196,8 @@
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
+        // padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
+        padding:5px;
 
         &.is-open {
             background-color: stencilColor("navPages-subMenu-backgroundColor");
