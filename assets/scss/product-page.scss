@@ -1010,3 +1010,149 @@ form.form.form-wishlist.form-action {
 .product-features {
     font-size: 22px;
 }
+
+
+//custom product view  maxx
+.main-product-page-container{
+   
+   @include breakpoint("medium"){
+        width:100%;
+        position:relative;
+        display:flex;
+        position:relative;
+        justify-content: center;
+        .col-product{
+            display:flex;
+            justify-content: center;
+            // align-items: center;
+            position:relative;
+            width:100%;
+            .product-thumbnail-images-container{
+                display:flex;
+                justify-content: center;
+                position:relative;
+                width:calc(100% / 2);
+                .thumbnail-container{
+                    height:350px;
+                    width:90px;
+                    display:block;
+                    position:relative;
+                    overflow:hidden;
+                    .thumbnail-image{
+                        overflow:hidden;
+                    }
+                    //place chevron in absolute position on top and bottom
+                    .fa-chevron-up{
+                        position:absolute;
+                        display:block;
+                        top:0;
+                        left:0;
+                        font-size:2rem;
+                        cursor: pointer;
+                        width:100%;
+                        text-align: center;
+                        z-index:1111;
+                        color:gray;
+                        &:hover{
+                            color:black;
+                        }
+                    }
+                    .fa-chevron-down{
+                        position:absolute;
+                        bottom:0;
+                        left:0;
+                        font-size:2rem;
+                        cursor: pointer;
+                        width:100%;
+                        text-align:center;
+                        color:gray;
+                        &:hover{
+                            color:black;
+                        }
+                    }
+                    //images thumbnail loop
+                    .thumbnail-image{
+                        display:flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding-bottom:28px;
+                        overflow-y:hidden;
+                        height:296px;
+                        margin-top:28px;
+                            
+                    }
+                
+                    //add space between thumbnail vertically
+                    .productView-thumbnail-link{
+                        margin-bottom:24px;
+                    }
+                 
+                   
+                }
+                
+                .main-product-image-container{
+                position:relative;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                padding-left:2%;
+                padding-right:2%;
+
+                    img{
+                        
+                        &:hover{
+                            cursor:zoom-in;
+                        }
+                    }
+                }
+            }
+
+
+
+            .product-description-container{
+                width:calc(100% / 2.2);
+                padding: 0 1%;
+                padding-right:5%;
+                .fa-star-half-o:before, .fa-star-o:before, .fa-star:before, .stamped-fa-star-half-o:before, 
+                .stamped-fa-star-o:before, 
+                .stamped-fa-star:before{
+                    font-size:28px;
+                    cursor:pointer;
+                    &:hover{
+                        color:green;
+                    }
+                }
+            }
+
+
+   
+           .action-container{
+               position:relative;
+               width:100%;
+               height:auto;
+               display:block;
+               .badge-container{
+                    display:flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    border-bottom:2px solid rgb(202, 202, 202);
+                    padding-bottom:15px;
+                    img{
+                        height:100%;
+                    }
+                    .lbl{
+                        font-size:17px;
+
+                    }
+               }
+               .price-container{
+                   display:block;
+                   width:100%;
+                
+               }
+           }
+            
+        }
+   }
+
+}
