@@ -286,7 +286,8 @@
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule
         background-color: stencilColor("navPages-subMenu-backgroundColor");
-        padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
+        // padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
+        padding: 2rem 2.5rem !important;
         position: absolute;
         text-align: left;
 

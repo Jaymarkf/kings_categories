@@ -71,12 +71,7 @@
                                 </span>
                                 <span data-product-price-without-tax class="price price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}} right ptax">{{price.without_tax.formatted}}</span>
                             </div>
-                        
-            
-            
-            
-            
-                        <div >
+                        <div>
                             <div class="price-section price-section--withoutTax non-sale-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}}>
                                 <span class="price left price-was was" data-product-non-sale-price-without-tax>Was <strike>{{price.non_sale_price_without_tax.formatted}}</strike></span>
                                 <!-- <span data-product-non-sale-price-without-tax class="price price--non-sale right">
@@ -183,14 +178,14 @@
                             {{price.rrp_without_tax.formatted}}
                         </span>
                     </div>
-                    <div class="price-section price-section--withoutTax non-sale-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}} style="display:flex;justify-content: space-between; align-items: center;">
+                    <div class="price-section price-section--withoutTax non-sale-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}} style="display:flex;justify-content: space-between; align-items: center;width:100%;">
                         <span class="price price--non-sale left" style="text-decoration: none;">Regular Price: </span>
                         <span data-product-non-sale-price-without-tax class="price price--non-sale right">
                             {{price.non_sale_price_without_tax.formatted}}
                         </span>
                     </div>
                
-                    <div class="price-section price-section--withoutTax" {{#if schema_org}}itemprop="offers" itemscope itemtype="http://schema.org/Offer"{{/if}} style="display:flex;justify-content: space-between; align-items: center;">
+                    <div class="price-section price-section--withoutTax" {{#if schema_org}}itemprop="offers" itemscope itemtype="http://schema.org/Offer"{{/if}} style="display:flex;justify-content: space-between; align-items: center;width:100%;">
                         <span class="price-label" {{#if price.non_sale_price_without_tax}}style="display: none;"{{/if}}>
                             {{theme_settings.pdp-price-label}}
                         </span>
@@ -218,8 +213,9 @@
                         
                             
                     </div>
-                    <div class="price-section price-section--saving price" {{#unless price.saved}}style="display: none;"{{/unless}} style="display:flex;justify-content: space-between;align-items: center;">
-                        <span data-product-price-saved class="price price--saving left" style="color:gray"> 
+                    <div class="price-section price-section--saving price" {{#unless price.saved}}style="display: none;"{{/unless}} style="display:flex;justify-content: space-between;align-items: center;width:100%;">
+                        <!-- <span data-product-price-saved class="price price--saving left" style="color:gray">  -->
+                        <span class="left" style="color:gray"> 
                             You save:
                         </span>
                         <span data-product-price-saved class="price price--saving right">

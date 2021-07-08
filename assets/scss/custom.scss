@@ -1239,7 +1239,7 @@ a.directions-button {
 .overlay-shipping{color:#fff;text-align:Center;background:url(../img/product-page/shipping-1.png);background-size:cover;background-position:center;width:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:50px;border:5px solid #333}
 .overlay-shipping h2{color:#fff;font-weight:700;}
 .overlay-financing h2{color:#fff;font-weight:700;}
-.overlay-financing{color:#fff;text-align:Center;background:url(../img/product-page/financing.png);background-size:cover;background-position:center;width:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:50px;border:5px solid #333}
+.overlay-financing{color:#fff;text-align:Center;background:url(../img/product-page/financing.png);background-size:cover;background-position:center;width:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:50px;border:5px solid #333;background-color: #333;}
 .overlay-shipping a{color:#fff;font-weight:700;font-size:18px;background:#d12229;border-radius:5px;padding:10px 20px;text-decoration:none;}
 .overlay-financing a{color:#fff;font-weight:700;font-size:18px;background:#d12229;border-radius:5px;padding:10px 20px;text-decoration:none;}
 
@@ -1932,6 +1932,40 @@ p.outofStock_message {
     }
 }
 
+.productView{
+    .rev{
+        display:flex;
+        width:100%;
+    }
+    .col-prod{
+        width:50%;
+        position:relative;
+           //description-container{
+            .product-description-container{
+                padding-right:5%;
+                padding-left:15%;
+                width:100%;
+                position:relative;
+            }
+    }
+
+
+ 
+
+    //star
+
+    .fa-star-half-o:before, .fa-star-o:before, .fa-star:before, .stamped-fa-star-half-o:before, .stamped-fa-star-o:before, .stamped-fa-star:before{
+        font-size:28px;
+        cursor:pointer;
+      
+    }
+    .fa-star-o:hover{
+        color:rgb(255, 174, 0);
+
+    }
+}
+
+
 
 
 /* The Modal (background) */
@@ -2137,7 +2171,10 @@ ul.nav-children-wImage > li > a.navPage-subMenu-action.navPages-action {
 }
 
 img.imageChildNav {
-    border: 1px solid #cccccc;
+    // border: 1px solid #cccccc;
+    padding-left:10%;
+    padding-right:10%;
+
 }
 ul.nav-children-wImage {
     max-width: 100rem;
@@ -2590,6 +2627,8 @@ img.lazyautosizes.ls-is-cached.lazyloaded {
 	.navPages-item{
 		.navPages-action{
 			margin-bottom:3px;
+            margin-left:10%;
+            margin-right:10%;
 			&:hover{ margin-bottom:0px; }
 			span{ 
 				white-space:nowrap;

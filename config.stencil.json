@@ -3,9 +3,14 @@
     "brand": {},
     "category": {
       "category-application.html": "/appliances",
-      "category-landing.html" : ["/refrigerators","/cooking","/dishwashers","/laundry","/bedding"]
+      "category-landing.html" : ["/refrigerators","/cooking","/dishwashers","/laundry","/bedding"],
+       "delivery-express.html" : "/delivery-express/"
+      
     },
-    "page": {},
+    "page": {
+    
+    
+    },
     "product": {}
   },
   "normalStoreUrl": "https://kingsgreatbuys.com",

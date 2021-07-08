@@ -150,7 +150,7 @@ li.tab {
 }
     .productView {
     display: flex;
-    flex-direction: row-reverse;
+    // flex-direction: row-reverse;
 }
     .productView-img-container img {
     margin: 0;
@@ -394,7 +394,7 @@ details {
   $b: 6px;
   
   background: #fff;
-  border: 1px solid #aaaaaa;
+//   border: 1px solid #aaaaaa;
   border-bottom: 0;
   list-style: none;
   
@@ -431,15 +431,16 @@ summary {
     margin-top: $arrow-size/2;
     transform: rotate(45deg);
     transition: inherit;
+    font-size:24px;
   }
   
   [open] & {
-    background: #d22229;
-    color: #ffffff;
+    background: white;
+    color: rgb(90, 90, 90);
     font-weight: 500;
       
       & > a{
-          color: #fff;
+          color: rgb(90, 90, 90);
           font-weight: 500;
       }
     
@@ -485,7 +486,7 @@ summary > a {
 }
     details {
     background: #fff;
-    border: 1px solid #aaaaaa;
+    // border: 1px solid #aaaaaa;
     border-bottom: 0;
     list-style: none;
     border-left: 0;
@@ -504,8 +505,8 @@ summary > a {
     background: #e6e6e6;
 }
     .details-wrapper {
-    border-left: 1px solid #aaaaaa;
-    border-right: 1px solid #aaaaaa;
+    // border-left: 1px solid #aaaaaa;
+    // border-right: 1px solid #aaaaaa;
 }
     
     .brand-div {
@@ -552,11 +553,14 @@ summary > a {
    
 }
 .productpage-actions > div > .form-field.form-field--increments {
-    width: 15%;
-    margin-right: 5%;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    // margin-right: 5%;
 }
     .productpage-actions>div>.form-action {
-    width: 35%;
+    // width: 35%;
+    width:100%;
 }
     .productpage-actions>div>img.free-shipping-cartadd {
     width: 30%;
@@ -623,6 +627,8 @@ summary > a {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-direction: column;
+
 }
     .productview-price > .apply-financing {
     line-height: 1;
@@ -703,13 +709,22 @@ div[data-product-attribute=set-rectangle]>.form-option {
 }
     .form-increment {
     text-align: center;
+    margin-left:auto;
+    display:flex;
+    width:200px;
+    text-align-last: center;
 }
   .productView-options > form.form > div > div[data-product-attribute=swatch] {
-    width: 75%;
+    width: 100%;
+    position:relative;
+    display:flex;
 }
     .productview-options-dynamic {
-    display: flex;
-        align-items: center;
+        display: flex;
+        // -ms-flex-align: center;
+        /* align-items: center; */
+        flex-direction: column;
+        flex-direction: column-reverse;
 }
     .productView-reviewLink > a {
     text-decoration: none;
@@ -890,6 +905,7 @@ ul.product-thumbnails {
     display: flex;
     align-items: center;
     width:100%;
+    flex-direction: column;
 }
 
 
@@ -993,12 +1009,12 @@ a.button.dropdown-menu-button > i.icon {
     display: none;
 }
 form.form.form-wishlist.form-action {
-    width: 30%;
-    float: right;
-    margin-top: 2.2%;
+    width: 100%;
+    // float: right;
+    // margin-top: 2.2%;
 }
 .productpage-actions.flex-div-productActions {
-    width: 70%;
+    width: 100%;
     float: left;
 }
 .productView > .productView-details .productView-price > .price-section--saving {

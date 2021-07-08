@@ -1,3 +1,12 @@
+<style>
+    .slick-next{
+        right: -2.5rem !important;
+    }
+    .slick-prev{
+        left: -1.35714rem !important;
+    }
+</style>
+
 <nav class="navPages">
     <div class="navPages-quickSearch">
         {{> components/common/quick-search}}
@@ -33,14 +42,14 @@
                 <a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" href="/brands/" style="white-space:nowrap;">
                     <!-- <img class="nav-image" src="{{getImage (cdn 'img/homepage/Brands.png')}}"  /> -->
                    <span style="white-space:nowrap">Brands</span>
-                   &nbsp;<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                
                 </a>
             </li>
         <li class="navPages-item">
                 <a href="/deal-match/" class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" style="white-space:nowrap;">
                     <!-- <img class="nav-image" src="{{getImage (cdn 'img/homepage/deal-match.png')}}"  /> -->
                     <span style="white-space: nowrap;">Deal Match</span>
-                    &nbsp;<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                   
                 </a>
         </li>
         
@@ -50,9 +59,43 @@
     </ul>
 
 </nav>
-
+<script type="text/javascript" src="https://code.jquery.com/git/jquery-1.x-git.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js" integrity="sha512-fDGBclS3HUysEBIKooKWFDEWWORoA20n60OwY7OSYgxGEew9s7NgDaPkj7gqQcVXnASPvZAiFW8DiytstdlGtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    //delete element if  innerhtml of navpage is empty
+
+    var slick_option = {
+        "dots": false,
+        "mobileFirst": true,
+        "slidesToShow": 5,
+        "slidesToScroll": 5,
+        "autoplay": false,
+		"infinite": false
+    };
+			
+			jQuery('.gg').each(function(){
+				jQuery(this).not('.slick-initialized').slick(slick_option);
+			});
+			
+			
+
+
+jQuery('.navPages-action.has-subMenu').on('hover click mousemove' , function(){
+	var _slickContainer = jQuery(this).parent().find('.gg');
+	
+      _slickContainer[0].slick.refresh();	 
+    
+
+});
+
+
+
+$(window).on('resize orientationchange', function() {
+  $('.gg').slick('resize');
+});
+
+
+//delete element if  innerhtml of navpage is empty
     var elem = document.getElementsByClassName('navPages-item');
     for(let i = 0; i<=elem.length;i++){
         var htmlstring = elem[i].innerHTML;
