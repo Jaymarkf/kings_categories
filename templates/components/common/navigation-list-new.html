@@ -2,7 +2,6 @@
         <a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" href="{{url}}" style="white-space:nowrap;">
             <!-- <img class="nav-image" src="{{cdn (concat 'img/homepage/' (concat name '.png'))}}"  /> -->
             <span style="white-space: nowrap;">{{name}}</span>
-            &nbsp;
             <i class="fa fa-chevron-down" aria-hidden="true"></i>
         </a>
 
@@ -26,7 +25,7 @@
     </div>
 {{else}}
     {{#if name '==' 'Delivery Express'}}
-        <a href="/delivery-express/" class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" style="white-space:nowrap;">
+        <a href="/delivery-express/" class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" style="white-space:nowrap;margin-right:2%;margin-left:1%;">
             <!-- <img class="nav-image" src="{{cdn 'assets/img/homepage/delivery-express.png'}}"  />  -->
             <span style="white-space: nowrap;">{{name}}</span>
         </a>

@@ -1025,8 +1025,39 @@ form.form.form-wishlist.form-action {
 }
 .product-features {
     font-size: 22px;
+    
 }
 
+//product description in main product page
+.product-description-container{
+    //remove quick specs and product features in mobile view
+    #brandmodel{
+        display:flex;margin-bottom:0;
+    }
+    .stamp-container{
+    display:flex;align-items: center;justify-content: center;
+    }
+        @media(max-width:550px){
+
+            .product-features{
+                display:none !important;
+            }
+            .productview-quick-specs{
+                display:none !important;
+            }
+            #brandmodel{
+                flex-direction: column !important;
+                #model-sku{
+                    margin:0 !important;
+                    padding: 0 !important;
+                }
+            }
+            .stamp-container{
+                justify-content: flex-start !important;
+            }
+        }
+}
+    
 
 //custom product view  maxx
 .main-product-page-container{

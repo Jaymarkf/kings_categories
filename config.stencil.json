@@ -3,16 +3,18 @@
     "brand": {},
     "category": {
       "category-application.html": "/appliances",
-      "category-landing.html" : ["/refrigerators","/cooking","/dishwashers","/laundry","/bedding"],
-       "delivery-express.html" : "/delivery-express/"
-      
+      "category-landing.html": [
+        "/refrigerators",
+        "/cooking",
+        "/dishwashers",
+        "/laundry",
+        "/bedding"
+      ],
+      "delivery-express.html": "/delivery-express/"
     },
-    "page": {
-    
-    
-    },
+    "page": {},
     "product": {}
   },
   "normalStoreUrl": "https://kingsgreatbuys.com",
-  "port": 3000
+  "port": "3000"
 }

@@ -2724,3 +2724,15 @@ img.lazyautosizes.ls-is-cached.lazyloaded {
 		display: none !important;
 	}
 }	
+
+.rev{
+
+    .imgcontainer-productpage{
+        float:right;
+        @media(max-width:768px){
+            display:block !important;
+            float:none !important;
+        }
+    }
+   
+}
