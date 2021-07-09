@@ -195,13 +195,18 @@
 					<ul>
 						<li>Type: {{#each categories}}
 								{{#if is_active}}
-								{{name}}
+								{{assignVar "base" name}}
+									{{#each children}}
+									{{#if is_active}}
+									 {{getVar "base"}} - {{name}}
+									{{/if}}
+									{{/each}}
 								{{/if}}		
 							{{/each}}
 						</li>
 						{{#each product.custom_fields}}
 							{{#if name '===' "Height"}}
-								<li>Height: </li>{{value}} in</li>
+								<li>Height: {{value}} in</li>
 							{{/if}}
 							{{#if name '===' "Width"}}
 								<li>Width: {{value}} in</li>
