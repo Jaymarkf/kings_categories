@@ -485,13 +485,13 @@ summary > a {
     font-weight: 600;
 }
     details {
-    background: #fff;
-    // border: 1px solid #aaaaaa;
-    border-bottom: 0;
-    list-style: none;
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0!important;
+        background: #fff;
+        list-style: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        border-radius: 10px !important;
+        padding-top: 7px;
+        box-shadow: 1px 7px 7px 1px #b9b8b8;
 }
     img.free-shipping-cartadd {
     width: 150px;
@@ -1035,7 +1035,7 @@ form.form.form-wishlist.form-action {
         display:flex;margin-bottom:0;
     }
     .stamp-container{
-    display:flex;align-items: center;justify-content: center;
+    display:flex;align-items: center;justify-content: start;
     }
         @media(max-width:550px){
 
