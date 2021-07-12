@@ -11,9 +11,9 @@
 
 </ul> -->
 <h1>Related Products</h1>
-<div class="tabs-content-custom">
+<div class="tabs-content-custom" style="display:flex;justify-content: center;">
 
-    <div role="tabpanel" aria-hidden="false" class="tab-content has-jsContent is-active" id="tab-related">
+    <div role="tabpanel" aria-hidden="false" class="tab-content has-jsContent is-active" id="tab-related" style="width:90%;">
         {{#if settings.data_tag_enabled}}
             {{> components/products/carousel products=product.related_products columns=4 list="Related Products"}}
         {{else}}
@@ -24,8 +24,8 @@
 </div>
 <br>
 <h1>Recently Viewed Products</h1>
-<div class="tabs-contents-custom">
-    <div role="tabpanel-custom" class="tab-content-custom" id="tab-similar-custom">
+<div class="tabs-contents-custom" style="display:flex;justify-content: center;">
+    <div role="tabpanel-custom" class="tab-content-custom" id="tab-similar-custom" style="width:90%;">
             {{> components/products/carousel products=product.similar_by_views columns=4 list="Customers Also Viewed"}}
     </div>
 

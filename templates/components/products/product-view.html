@@ -33,7 +33,7 @@
 				Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
 				for variant/rule image replacement
 				--}}
-			<div class="imgcontainer-productpage" style="text-align:center;width: calc(100vw - 225%);border: 1px solid #cccccc;">
+			<div class="imgcontainer-productpage" style="text-align:center;width: calc(100vw - 230%);border: 1px solid #cccccc;">
 				<div style="text-align:center;margin-top:2%;">
 					{{#if product.brand}}
 					<img class="cardlogoimage {{sku}} " src="/product_images/uploaded_images/{{toLowerCase (dashcase product.brand.name)}}.jpg">
@@ -173,7 +173,7 @@
 				}(jQuery));
 			</script>
 		</section>
-		<section class="col-prod productview-description-custom" style="width:50% !important;">
+		<section class="col-prod productview-description-custom">
 			<div class="product-description-container">
 				<h1  style="padding-top:6%"class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
 				<p id="brandmodel">
@@ -221,7 +221,7 @@
 			</div>
 		</section>
 	</div>
-	<section class="col-prod productview-details-custom">
+	<section class="col-prod productview-details-custom" style="width:50% !important;">
 		<div class="productView-product">
 				<div style="display:block;background-color:rgb(228 228 228);padding-top:2%;padding-bottom:2%;">
 					<div class="product-badge">
