@@ -25,11 +25,13 @@
 	
 	.rebate-title{margin: 10px auto;font-size: 20px;height: 48px;}
 	.rebate-desc{width: 90%; margin: 20px auto;}
-	.rebate-brand0logo{}
-
+	
 	.rebate-filter{width:95%;margin: 20px auto;}
 	select{width: 10%;display: inline-block;margin: 10px 10px 20px 0;padding: 10px 0 10px 5px;border-color: #c8c8c8;color: #c8c8c8;}
 	select:hover{color:#222;border-collapse:#222}
+
+	
+
 </style>   
    
 <div id="rebate-content" class="main-rebate">
@@ -49,24 +51,24 @@
 	</ul>
 </div>
 <script>
-$(document).ready(function(){
-			$('#rebatesort').change(function(){
-				 if($(this).val() == "End Date"){
-								$("#rebates-list .rebate-item").sort(function (a, b) {
-			if ( ($(a).attr("data-time").toLowerCase() > $(b).attr("data-time").toLowerCase()) )  { 
-				return 1;
-			} else if ( ($(a).attr("data-time").toLowerCase() == $(b).attr("data-time").toLowerCase()) ){
-				return 0;
-			} else {
-				return -1;
-			}
+$(document).ready(function()
+{
+		$('#rebatesort').change(function(){
+			 if($(this).val() == "End Date"){
+							$("#rebates-list .rebate-item").sort(function (a, b) {
+		if ( ($(a).attr("data-time").toLowerCase() > $(b).attr("data-time").toLowerCase()) )  { 
+			return 1;
+		} else if ( ($(a).attr("data-time").toLowerCase() == $(b).attr("data-time").toLowerCase()) ){
+			return 0;
+		} else {
+			return -1;
+		}
 		}).each(function () {
 			var elem = $(this);
 			elem.remove();
 			$(elem).appendTo("#rebates-list");
 		});
-				 
-				 }
+		}
 				 else if($(this).val() == "Brand"){
 					$("#rebates-list .rebate-item").sort(function (a, b) {
 			if ( ($(a).attr("data-brand").toLowerCase() > $(b).attr("data-brand").toLowerCase()) )  { 

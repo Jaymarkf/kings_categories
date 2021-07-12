@@ -209,6 +209,7 @@
                         {{#if price.with_tax}}
                             <abbr title="{{lang 'products.excluding_tax'}}">{{lang 'products.price_without_tax' tax_label=price.tax_label}}</abbr>
                         {{/if}}
+
                         <span data-product-price-without-tax class="price price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}} right" style="font-size:1.4rem;">{{price.without_tax.formatted}}</span>
                         
                             

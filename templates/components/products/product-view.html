@@ -33,7 +33,7 @@
 				Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
 				for variant/rule image replacement
 				--}}
-			<div class="imgcontainer-productpage" style="text-align:center;width: calc(100vw - 268%);border: 1px solid #cccccc;">
+			<div class="imgcontainer-productpage" style="text-align:center;width: calc(100vw - 225%);border: 1px solid #cccccc;">
 				<div style="text-align:center;margin-top:2%;">
 					{{#if product.brand}}
 					<img class="cardlogoimage {{sku}} " src="/product_images/uploaded_images/{{toLowerCase (dashcase product.brand.name)}}.jpg">
@@ -173,14 +173,15 @@
 				}(jQuery));
 			</script>
 		</section>
-		<section class="col-prod productview-description-custom">
+		<section class="col-prod productview-description-custom" style="width:50% !important;">
 			<div class="product-description-container">
-				<h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+				<h1  style="padding-top:6%"class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
 				<p id="brandmodel">
 					<strong style="color:#757575;">Brand: {{product.brand.name}}</strong><strong id="model-sku" style="color:#757575;margin-left:auto;padding-left:1%">Model No.: {{product.sku}}</strong></p>
 				<div  class="stamp-container">
-					<div id="stamped-reviews-widget" class="mx-auto grn-matt-stamp" style="display: inline-block;" data-widget-type="site-badge" data-badge-type="minimal" data-title="Verified Reviews" data-title-size="15" data-size-stars="12" data-element-id="2" data-lang="en">&nbsp;</div>
+					<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><span id="label_reviews">(No reviews yet)</span>
 				</div>
+				
 				{{product.detail_messages}}
 				<div class="product-features" style="border-bottom: 1px solid #cacaca;padding-bottom:10px;">
 					{{#eachIndex (split product.description '<!-- split -->')}}
@@ -222,16 +223,22 @@
 	</div>
 	<section class="col-prod productview-details-custom">
 		<div class="productView-product">
-				<div class="product-badge" style="border-bottom:2px solid #cacaca;padding-bottom:15px">
-					<img src="{{cdn 'img/badges/deal-match.png'}}" alt="">
-					{{#inArray product.category "Delivery Express"}}
-					<img src="{{cdn 'img/badges/delivery-express.png'}}" alt="">
-					{{/inArray}}
-					<div class="apply-financing">
-						<div class="financing-div finance-btn" style="cursor:pointer">
-							<img src="{{cdn 'img/badges/financing.png'}}" alt="">
-							<span>Apply for<br>Financing</span>
+				<div style="display:block;background-color:rgb(228 228 228);padding-top:2%;padding-bottom:2%;">
+					<div class="product-badge">
+						<img src="{{cdn 'img/badges/deal-match.png'}}" alt="">
+						{{#inArray product.category "Delivery Express"}}
+						<img src="{{cdn 'img/badges/delivery-express.png'}}" alt="">
+						{{/inArray}}
+						<div class="apply-financing">
+							<div class="financing-div finance-btn" style="cursor:pointer">
+								<img src="{{cdn 'img/badges/financing.png'}}" alt="">
+								<span>Apply for<br>Financing</span>
+							</div>
 						</div>
+						
+					</div>
+					<div style="display:block;position:relative;width:100%;text-align:center;">
+						<span style="font-style:italic;color:red;font-size:18px;">Call us for estimated delivery date</span>
 					</div>
 				</div>
 			<!--
@@ -266,6 +273,7 @@
 			<!--<a class="ask-for-price-overlay">ASK FOR PRICE</a>-->
 			
 	{{else}}{{#gt product.stock_level 10000}}
+			
 			<div class="productview-price">
 				{{#if product.call_for_price}}
 				<p class="productView-price">
@@ -550,6 +558,34 @@
                                $('[rebate-idd]').attr('open' ,' ');
                                element.scrollIntoView({behavior: "smooth", block: "center", inline: "start"});
                         });
+
+		
                       
                 });
+
+
+//to automate star reviews in product description
+function addEventListenerStamped(el, eventName, handler) { 
+   if (el.addEventListener) { el.addEventListener(eventName, handler); }
+   else { el.attachEvent('on' + eventName, function () { handler.call(el); }); } 
+}
+
+// Listening for event
+addEventListenerStamped(document, '##replaceWithEventName##', function(e) {
+
+});
+
+// Example
+// Listening for reviews widget loaded event
+addEventListenerStamped(document, 'stamped:reviews:loaded', function(e) {
+	var count = $('#tab-reviews').attr('data-count');
+	var reviews = $('#label_reviews');
+	var str = '';
+	if(count < 1 ){
+		str  = '( No reviews yet )';	
+	}else{
+		str = '(' + count + ' reviews )';
+	}
+	reviews.text(str);
+});
 </script>
