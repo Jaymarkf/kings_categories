@@ -1,0 +1,86 @@
+{{#partial "page"}}
+<main class="page">
+
+
+  <div class="contact-banner">
+        <h1 class="page-heading">{{ page.title }}</h1>
+    </div>
+
+    <div id="contact-us-page" class="page-content delivery">
+        <div class="contact-form">
+        <h1>Contact Form</h1>
+       <div>
+           <p>You can write to us, phone us during normal business hours or contact us via e-mail by using our contact form.</p>
+
+<p>Please complete the fields in the contact form, giving as much detail as possible. All fields marked * are required. We do not sell or otherwise redistribute the information that you provide. For more details on how we use the information you give us please see our <a class="" href="/privacy/">Privacy Policy</a></p>
+</div>
+{{#if forms.contact.success}}
+            <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+        {{else}}
+            <p>{{{page.content}}}</p>
+       <form data-contact-form class="form" action="{{urls.contact_us_submit}}" method="post">
+    {{inject 'contactEmail' (lang 'forms.validate.contact.email_address')}}
+    {{inject 'contactQuestion' (lang 'forms.validate.contact.question')}}
+    {{#if forms.contact.error}}
+    <div id="contact-us-error">{{> components/common/alert-error forms.contact.error}}</div>
+    {{/if}}
+    <input type="hidden" name="page_id" id="page_id" value="{{forms.contact.page_id}}">
+    <div class="form-row form-row--half">
+        
+            <div class="form-field">
+                
+                <input class="form-input" type="text" id="contact_fullname" name="contact_fullname" placeholder="Full Name" value="{{customer.name}}">
+            </div>
+      
+
+       
+            <div class="form-field">
+
+                <input class="form-input" type="text" id="contact_phone" placeholder="Phone" name="contact_phone" value="{{customer.phone}}">
+            </div>
+      
+
+        <div class="form-field">
+            
+            <input class="form-input" type="text" id="contact_email" placeholder="Email" name="contact_email" value="{{customer.email}}">
+        </div>
+
+        
+            <div class="form-field">
+                <input class="form-input" placeholder="Company" type="text" id="contact_companyname" name="contact_companyname">
+            </div>
+
+    </div>
+
+    <div class="form-field">
+        
+        <textarea name="contact_question" id="contact_question" placeholder="Message" rows="5" cols="50" class="form-input"></textarea>
+    </div>
+
+    
+
+    <div class="form-actions">
+        <input class="button button--primary" type="submit" value="{{lang 'forms.contact_us.submit' }}">
+    </div>
+</form>
+{{/if}}
+            </div>
+        <div class="get-in-touch">
+        <h3>GET IN TOUCH</h3>
+            <h5>Postal Address</h5>
+            <p>King's Great Buys Plus
+5010 East Vogel Road
+Evansville, Indiana 47715</p>
+            <h5>Contact Numbers</h5>
+            <p>Tel: 812-473-5464</p>
+            <h5>Connect With Us</h5>
+            <img src="{{getImage (cdn 'assets/img/cms/vector2.png')}}">
+            <img src="{{getImage (cdn 'assets/img/cms/vector1.png')}}">
+        </div>
+    </div>
+
+</main>
+
+{{/partial}}
+
+{{> layout/cms-base}}

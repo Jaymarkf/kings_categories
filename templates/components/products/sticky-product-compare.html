@@ -1,0 +1,95 @@
+<div class="maincontainer-compare">
+         <div class="child-container-compare" style="display:none">
+                  <div class="action" style="flex-direction:column;text-align:center;border:none !important;display:none;">
+                           <h4 style="margin-top:0;font-size:18px !important;" id="h4-compare"></h4>
+                           <div style="display:block;width:100%;">
+                                    <button style="color:white;background-color:#d22229; padding: 18px;font-size: 17px;border-radius: 11px;" id="btn-compare-now" onclick="submit_url()">COMPARE</button>
+                           </div>
+                           <div style="display:block;text-align:center;margin-top:20px;">
+                                    <button style="text-decoration: underline;cursor: pointer;" onclick="reset()">
+                                             Clear All
+                                    </button>
+                           </div>
+                  </div>   
+         </div>     
+</div>
+<script>
+         //compare products
+         var check_count = 0;
+         var arr_product = new Array();
+                  $(document).ready(function(){
+                           //unchecked all checkbox after page load XD
+                           $('.cmp').prop('checked',false);
+                  });
+                  $('.cmp').on('change',function(){
+                  $('.child-container-compare').css('display','flex');
+                  let product_image =  $(this).parents('li.product').children().eq(0).find('img.listItem-image').attr('src');
+                  let product_logo_title = $(this).parents('li.product').children().eq(1).find('.cardlogoimage').attr('src');
+                  let product_description = $(this).parents('li.product').children().eq(1).find('.listItem-title').children().html();
+                  let product_price = $(this).parents('li.product').children().eq(2).find('span.ptax').html();
+                  let id = $(this).attr('data-compare-id');
+                  var html ='';
+                  var check_count = $('input[type="checkbox"]:checked').length;
+                  // var actions = '<div class="action" style="display:flex;flex-direction:column;text-align:center;border:none !important;display:none;"><h4 style="margin-top:0;font-size:18px !important;">Comparing ('+len+') Products</h4></div>';       
+                  // var action = '<h4 style="margin-top:0;font-size:18px !important;">Comparing ('+len+') Products</h4>';
+                  var elem = $('.child-container-compare');
+                  html = '<div id="compare-sticky-'+id+'" class="compare-sticky" style="height:190px;width:240px;border:1px solid #e2e2e2;position:relative;display:flex;justify-content:center;align-items:center;padding:5px;" class="children-container-compare"><button class="close-button" onclick="delete_parent(this)" style="top:1px;right:4px;position:absolute" delete-id="'+id+'"><span class="fa fa-close btn btn-dark btn-close" data-id="'+id+
+                                             '"></span></button><div style="position:relative;display:block;"><img style="height:100px;" src="'+ product_image +'"></div>'+
+                                             '<div style="width:150px;display:block;padding-left:15px;"><img style="width:100px;" src="'+product_logo_title+'"><span style="-webkit-box-orient: vertical;display:-webkit-box !important;-webkit-line-clamp: 3 !important;overflow: hidden !important;">'+
+                                             product_description + '</span><span style="position:relative;font-size:19px;top:10px">'+ product_price + '</span></div></div>';                       
+                  //get element if 2 checkbox was checked   
+                  if(this.checked){
+                           arr_product.push("/"+id);
+                           elem.prepend(html);
+                           if(check_count > 1){
+                                   $('#h4-compare').html('Comparing ('+check_count+') Products');
+                                   $('.action').css('display','block');
+                           }  
+                  }else{
+                        $('#compare-sticky-'+id).remove();
+                        var index_remove = arr_product.indexOf(id);
+                        arr_product.splice(index_remove,1);
+                       
+                        if(check_count < 2){
+                                    $('.action').css('display','none');
+                        }else{
+                                    $('#h4-compare').html('Comparing ('+check_count+') Products');
+                        }
+                        if(check_count == 0){
+                              $('.child-container-compare').css('display','none');
+                        }
+                  } 
+         });
+         function delete_parent(elem){
+                  
+                  let id =    elem.getAttribute('delete-id');
+                  $('#compare-sticky-'+id).remove();
+                  var index_remove = arr_product.indexOf(id);
+                  arr_product.splice(index_remove,1);
+                  //unchecked the checkedbox
+                
+                  $('#compare-'+id).prop('checked',false);
+                  var check_count = $('input[type="checkbox"]:checked').length;
+                   if(check_count < 2){
+                            $('.action').css('display','none');
+                   }else{
+                            $('#h4-compare').html('Comparing ('+check_count+') Products');
+                   }
+                   if(check_count == 0){
+                         $('.child-container-compare').css('display','none');
+                   }
+                  //uncheck the checkbox
+         }
+         function submit_url(){
+                  var data = arr_product.toString();
+                  var regex = data.replace(/,/g,"");
+                  window.location.href = "/compare"+regex;
+         }
+         function reset(){
+               $(".cmp").prop('checked',false);
+               $('.action').css('display','none');
+               $('.compare-sticky').remove();
+               check_count = $('input[type="checkbox"]:checked').length;
+               $('.child-container-compare').css('display','none');
+         }
+</script>

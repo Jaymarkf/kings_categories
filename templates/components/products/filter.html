@@ -1,0 +1,44 @@
+<div style="width:100%;position:relative;text-align:right;padding-right:2%;">
+    <span><b>View:</b></span>
+    <span class="btn listz active" style="font-size:1.5rem;color:#black"><i class="fa fa-list"></i></span> 
+    <span class="btn gridz" style="font-size:1.5rem;color:#9a9a9a"><i class="fa fa-th-large"></i></span>
+</div>
+<form class="actionBar" method="get" data-sort-by>
+
+    {{> components/category/sort-box sort=sort}}
+</form>
+
+<script>
+    $(document).ready(function(){
+    
+        $('.listz').click(function(){
+            $(this).css('color','black');
+            $(this).addClass('active');
+            $('.gridz').removeClass('active');
+            $('.gridz').css('color','#9a9a9a');
+            $(this).css('transition','all 0.5s');
+            $('li.product').removeClass("grid-view");
+        });
+    
+        $('.gridz').click(function(){
+            $(this).css('color','black');
+            $(this).addClass('active');
+            $('.listz').removeClass('active');
+            $('.listz').css('color','#9a9a9a');
+            $(this).css('transition','all 0.5s');
+            $('li.product').addClass('grid-view');
+           
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+    </script>

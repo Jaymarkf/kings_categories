@@ -1,0 +1,28 @@
+<nav>
+
+    {{#if category.subcategories}}
+  
+        <div class="sidebarBlock">
+            <h5 class="sidebarBlock-heading">{{category.name}}</h5>
+            <ul class="navList">
+                {{#each category.subcategories}}
+                    {{#all (if name '!==' 'Freestanding Smoothtop Electric Range') (if name '!==' '30" Freestanding Coil Electric Range') (if name '!==' 'Slide In Electric Range') (if name '!==' 'Ice Makers') (if name '!==' 'Slide In Gas Range') (if name '!==' 'Upright Freezers') (if name '!==' 'Chest Freezers') (if name '!==' '30" Free Standing Gas Range') (if name '!==' '20" Free Standing Gas Range') (if name '!==' 'Accessories') (if name '!==' 'Built In Microwave') (if name '!==' 'Countertop Microwave') (if name '!==' 'Countertop Microwaves') (if name '!==' 'Over The Range Microwave') (if name '!==' 'Convertible Hoods') (if name '!==' 'Ducted Hood') (if name '!==' 'Ducted Hoods') (if name '!==' 'Ductless Hoods') (if name '!==' 'Professional Hood') }} 
+                        <li class="navList-item">
+                        <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
+                        
+                        </li>
+                    {{/all}}
+                {{/each}}
+            </ul>
+        </div>
+   
+    {{/if}}
+
+
+
+    {{#if category.faceted_search_enabled}}
+        {{> components/faceted-search/index category}}
+    {{else}}
+        {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
+    {{/if}}
+</nav>

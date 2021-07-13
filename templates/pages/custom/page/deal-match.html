@@ -1,0 +1,353 @@
+{{#partial "page"}}
+
+<main class="page cms">
+    
+   <div class="deal-match-banner">
+        <h1 class="page-heading">{{ page.title }}</h1>
+    </div>
+
+    <div class="page-content deal-match">
+        <h1>Deal Match Guarantee</h1>
+        <div class="deal-content">
+            <img src="{{getImage (cdn 'assets/img/cms/best-price.png')}}">
+            <div>
+                <p>King's Great Buys Plus wants you to avail your desired product without worrying about the price. If you find a lower price advertised by a local retail competitor for a similar brand and model before your purchase or up to 30 days after, we will match that deal.</p>
+
+<p>Simply bring a copy of the ad or deal of the local competitor to a King's Great Buys Plus store while it is still in effect. Once validated and verified, we will match the competitor's deal. We can also match our own deals during price drops and special offers from the product's manufacturer, given that it is within the specified time frame.</p>
+
+<p>However, the deal match guarantee does not apply to the following:</p>
+                <ul>
+<li>- Offers that include financing and bundling of items</li>
+<li>- Pricing errors and mail-in offers</li>
+<li>- Free, limited-quantity, out-of-stock, clearance, refurbished, and special sale or holiday items</li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+    <div class="deal-match-faqs">
+        <h1 class="deal-faqs-heading">DEAL MATCH FREQUENTLY ASKED QUESTIONS</h1>
+<div class="container collapse-deal">
+  <details>
+    <summary>Who is considered a local retail competitor?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>Acceptable local retail competitors are authorized stores located in the same market area as your local King's Great Buys Plus store.</p>
+      </div>
+    </div>
+  </details>
+  <details>
+    <summary>What is considered "proof" of deal?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>For already purchased items, proofs of deal include the King's Great Buys Plus original and official receipt and the local competitor's current ad, sales receipt, worksheet, or quote. For deal matching, we reserve the right to contact the competitor’s store for deal verification and checking of the item’s availability.</p>
+      </div>
+    </div>
+  </details>
+  <details>
+    <summary>How do you handle a deal match if the King's Great Buy Plus deal includes a promotional offer such as a gift card or rebate?</summary>
+    <div class="details-wrapper">   
+      <div class="details-styling">        
+        <p>The King's Great Buys Plus net purchase deal is calculated by deducting the value of all instant and mail-in discounts such as rebates, free offers, and promotional gift cards. Existing rebates and free offers associated with a product purchased at King's Great Buys Plus will not apply if a deal match is executed.</p>
+      </div>
+    </div>
+  </details>
+    <details>
+    <summary>How do you handle a deal match for instant gift cards included in a purchase?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>The value of an instant gift card with purchase will be considered when calculating a deal match. If the combined value of a competitor's product and the instant gift card is lower than the combined value of King’s Great Buys Plus' product deal and instant gift card, King's Great Buys Plus will match either the deal or the instant gift card value, depending on the offer.</p>
+      </div>
+    </div>
+  </details>
+    <details>
+    <summary>How do you handle a deal match for a competitor’s deal with rebate and promotional offer inclusions?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>We deduct the value of instant discounts such as instant rebates from the total amount of purchase to get the competitor's net purchase deal. Mail-in rebates and other deferred savings are not included in the deductions.</p>
+      </div>
+    </div>
+  </details>
+    <details>
+    <summary>What if the local competitor does not have the item in stock or has limited quantities of the product?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>Sometimes, a retailer will advertise a very low deal for a product but has limited quantities in stock. Out-of-stock or items with limited quantities are not eligible for deal matching. Likewise, if King's Great Buys Plus has a product that is advertised as being limited in quantity, it will not be eligible for deal matching.</p>
+      </div>
+    </div>
+  </details>
+    <details>
+    <summary>Are King’s Great Buys Plus services eligible for deal matching?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>Due to differences in performance of services and types of service offered, deal matching does not apply to services (i.e. deliver/installation, warranties, etc.)</p>
+      </div>
+    </div>
+  </details>
+    <details>
+    <summary>Can I have my deal match request processed over the phone or online?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>Because of the nature of deal matching, we are unable to allow customers to deal match online or over the telephone. To take advantage of this guarantee, you must put your order in at a physical King's Great Buys Plus store. <a href="" class="">Click here</a> to locate one near you.</p>
+      </div>
+    </div>
+  </details>
+    <details>
+    <summary>Are Internet-only retailer deals eligible for King’s Great Buys Plus deal matching?</summary>
+    <div class="details-wrapper">
+      <div class="details-styling">        
+        <p>King's Great Buys Plus does not match the deals of Internet-only retailers or the online-only offers of our local retail competitors. If you find a local retail competitor honoring its own online deals, we'll match their deal. Eligible items must be the same brand and model, in the same condition and currently in stock at the local retail competitor's store.</p>
+      </div>
+    </div>
+  </details>
+</div>
+
+
+    </div>
+
+
+</main>
+<script>
+    miscPolyfillsForIE();
+
+/*
+let accordion = new Collapse(element, { option: value}).init();
+
+  Options - { option: defaultValue }
+    accordion: false,
+    initClass: 'collapse-init',
+    activeClass: 'panel-active',
+    heightClass: 'collapse-reading-height',
+
+  Methods - accordion.method(panel)
+    open(panel)
+    close(panel)
+    toggle(panel)
+    openSinglePanel(panel) [AKA accordion mode]
+    openAll()
+    closeAll()
+
+  Events - panel.addEventListener('event')
+    openingPanel
+    openedPanel
+    closingPanel
+    closedPanel
+*/
+
+class Collapse {
+  constructor(container, options = {}) {
+    let defaults = {
+      accordion: false,
+      initClass: 'collapse-init',
+      activeClass: 'panel-active',
+      heightClass: 'collapse-reading-height',
+    }
+    
+    this.settings = Object.assign({}, defaults, options);
+    
+    this._container = container;
+    this._panels = container.querySelectorAll("details");
+    
+    this.events = {
+      openingPanel: new CustomEvent('openingPanel'),
+      openedPanel: new CustomEvent('openedPanel'),
+      closingPanel: new CustomEvent('closingPanel'),
+      closedPanel: new CustomEvent('closedPanel'),
+    };
+  }  
+
+  // Sets height of panel content
+  _setPanelHeight( panel ) {
+    let contents = panel.querySelector("summary + *");
+    
+    contents.style.height = contents.scrollHeight + "px";
+  }
+
+  // Removes height of panel content
+  _removePanelHeight( panel ) {
+    let contents = panel.querySelector("summary + *");
+    
+    contents.style.height = null;
+  }
+  
+  //=== Open panel
+  open(panel) {
+    panel.dispatchEvent( this.events.openingPanel );
+
+    panel.open = true;
+  }
+
+  // Add height and active class, this triggers opening animation
+  _afterOpen(panel) {
+    this._setPanelHeight(panel);
+    panel.classList.add(this.settings.activeClass);
+  }
+
+  // Remove height on animation end since it's no longer needed
+  _endOpen(panel) {
+    panel.dispatchEvent( this.events.openedPanel );
+    
+    this._removePanelHeight(panel);
+  }
+  
+  //=== Close panel, not toggling the actual [open] attr!
+  close(panel) {
+    panel.dispatchEvent( this.events.closingPanel );
+    this._afterClose(panel);
+  }
+  
+  // Set height, wait a beat, then remove height to trigger closing animation
+  _afterClose(panel) {
+    this._setPanelHeight(panel);
+
+    setTimeout(() => {
+      panel.classList.remove(this.settings.activeClass);
+      this._removePanelHeight(panel);
+    }, 100); //help, this is buggy and hacky
+  }
+
+  // Actually closes panel once animation finishes
+  _endClose(panel) {
+    panel.dispatchEvent( this.events.closedPanel );
+    
+    panel.open = false;
+  }
+  
+  //=== Toggles panel... just in case anyone needs this
+  toggle(panel) {
+    panel.open ? this.close(panel) : this.open(panel);
+  }
+
+  //=== Accordion closes all panels except the current passed panel 
+  openSinglePanel(panel) {
+    this._panels.forEach((element) => {
+      if (panel == element && !panel.open) {
+        this.open(element);
+      } else {
+        this.close(element);
+      }
+    });
+  }
+  
+  //=== Opens all panels just because
+  openAll() {
+    this._panels.forEach((element) => {
+      this.open(element);
+    });
+  }
+  
+  //=== Closes all panels just in case
+  closeAll() {
+    this._panels.forEach((element) => {
+      this.close(element);
+    });
+  }
+  
+  // Now put it all together
+  _attachEvents() {
+    this._panels.forEach(panel => {
+      let toggler = panel.querySelector("summary");
+      let contents = panel.querySelector("summary + *");
+
+      // On panel open
+      panel.addEventListener("toggle", e => {
+        let isReadingHeight = panel.classList.contains(this.settings.heightClass);
+
+        if (panel.open && !isReadingHeight) {
+          this._afterOpen(panel);
+        }
+      });
+
+      toggler.addEventListener("click", e => {
+        // If accordion, stop default toggle behavior
+        if (this.settings.accordion) {
+          this.openSinglePanel(panel);
+          e.preventDefault();
+        }
+        
+        // On attempting close, stop default close behavior to substitute our own
+        else if (panel.open) {
+          this.close(panel);
+          e.preventDefault();
+        }
+        
+        // On open, proceed as normal (see toggle listener above)
+      });
+      
+      /*
+        transitionend fires once for each animated property, 
+        but we want it to fire once for each click. 
+        So let's make sure to watch only a single property
+        Note this makes complex animations with multiple transition-durations impossible
+        Sorry
+      */
+      let propToWatch = '';
+          
+      // On panel finishing open/close animation
+      contents.addEventListener("transitionend", (e) => {
+        // Ignore transitions from child elements
+        if(e.target !== contents) {
+          return;
+        }
+          
+        // Set property to watch on first fire
+        if ( !propToWatch ) propToWatch = e.propertyName;
+        
+        // If watched property matches currently animating property
+        if ( e.propertyName == propToWatch ) {
+          let wasOpened = panel.classList.contains(this.settings.activeClass);
+          wasOpened ? this._endOpen(panel) : this._endClose(panel);
+        }
+      });
+    });
+  }
+
+  init() {
+    // Attach functionality
+    this._attachEvents();
+    
+    // If accordion, open the first panel
+    if (this.settings.accordion) {
+      this.openSinglePanel(this._panels[0]);
+    }
+    
+    // For styling purposes
+    this._container.classList.add(this.settings.initClass);
+    
+    return this;
+  }
+}
+
+let makeMePretty = document.querySelector(".collapse-deal");
+let accordion = new Collapse(makeMePretty, { accordion: true }).init();
+
+// Toggle accordion behavior
+document.querySelector("#accordion-toggle")
+  .addEventListener("change", function() {
+    this.checked ? 
+      accordion.settings.accordion = false : 
+      accordion.settings.accordion = true ;
+});
+
+// hoisthoistupwego I'm stuck on a machine with IE11
+function miscPolyfillsForIE() {  
+  // NodeList.forEach() polyfill
+  // https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Browser_Compatibility
+  if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+  }
+
+  // Object.assign() polyfill 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+  "function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:function(e,t){"use strict";if(null==e)throw new TypeError("Cannot convert undefined or null to object");for(var n=Object(e),r=1;r<arguments.length;r++){var o=arguments[r];if(null!=o)for(var c in o)Object.prototype.hasOwnProperty.call(o,c)&&(n[c]=o[c])}return n},writable:!0,configurable:!0});
+  
+  // CustomEvent polyfill
+  // https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
+  !function(){if("function"==typeof window.CustomEvent)return!1;function t(t,e){e=e||{bubbles:!1,cancelable:!1,detail:void 0};var n=document.createEvent("CustomEvent");return n.initCustomEvent(t,e.bubbles,e.cancelable,e.detail),n}t.prototype=window.Event.prototype,window.CustomEvent=t}();
+}
+
+
+</script>
+
+{{/partial}}
+
+{{> layout/cms-base}}

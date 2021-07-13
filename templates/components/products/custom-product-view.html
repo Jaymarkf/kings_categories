@@ -1,0 +1,110 @@
+<div class="main-product-page-container" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
+         <div class="col-product">
+                  <!-- producct thumbnail and product_images -->
+                  <div class="product-thumbnail-images-container">
+                        <div class="thumbnail-container">
+                                 <i class="fa fa-chevron-up"></i>
+                                 <div class="thumbnail-image">
+                                         {{#each product.images}}
+                                          <a class="productView-thumbnail-link" href="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" data-image-gallery-item data-image-gallery-new-image-url="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}" data-image-gallery-zoom-image-url="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}">
+                                                            {{> components/common/responsive-img
+                                                            image=this
+                                                            fallback_size=../theme_settings.productview_thumb_size
+                                                            lazyload=../theme_settings.lazyload_mode
+                                                            }}
+                                                   </a>
+                                         {{/each}}                   
+                                 </div>
+                                 <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <div class="main-product-image-container">
+                                {{> components/common/responsive-img
+					image=product.main_image
+					class="productView-image--default"
+					fallback_size=theme_settings.product_size
+					lazyload=theme_settings.lazyload_mode
+					default_image=theme_settings.default_image_product
+					otherAttributes="data-main-image"
+				}}
+                        </div>
+                  </div>
+                  <div class="product-description-container">
+                        <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+			<p><strong style="color:#757575;">Brand: {{product.brand.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model No.: {{product.sku}}</strong></p>
+                        <div style="display:flex;align-items: center;"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>&nbsp;&nbsp;&nbsp;No Ratings Yet</div>
+                        {{product.detail_messages}}
+			<div class="product-features">
+				{{#eachIndex (split product.description '<!-- split -->')}}
+				{{#if index '==' '3' }} 
+				<!-- {{{item}}}<span class="read-more-product-page">more features</span>-->
+				{{{item}}}
+				{{/if}}
+				{{/eachIndex}}
+		         </div>
+			<div class="productView-options"></div>
+                </div>
+         </div>
+         <div class="col-product" style="width:calc(100% / 2);">
+                <div class="action-container">
+                       <div class="badge-container">
+                                <a href="#"><img src="{{cdn 'img/badges/deal-match.png'}}" alt=""></a>
+                                <a href="#"><img src="{{cdn 'img/badges/delivery-express.png'}}" alt=""></a>                            
+                                <a href="#" style="display:flex;align-items: center;text-decoration:none;">
+                                        <img src="{{cdn 'img/badges/financing.png'}}" alt="">
+                                        <span class="lbl" style="padding-left:10px;">Apply for<br> Financing</span>
+                                </a>
+                       </div>
+                       <div class="price-container">
+                                <div class="xx">
+                                        {{#if product.call_for_price}}
+                                        <p class="xx">
+                                                <span> {{product.call_for_price}}</span>
+                                        </p>
+                                        {{/if}}
+                                        <div class="xx">
+                                                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                                                {{> components/products/price price=product.price schema_org=schema is_category=false}}
+                                                {{else}}
+                                                {{> components/common/login-for-pricing}}
+                                                {{/or}}
+                                        </div>
+                                        {{{region name="product_below_price"}}}
+                                </div>
+                       </div>
+                        {{#each product.custom_fields}}
+                        {{#if name '===' 'Rebate IDs'}}
+                        {{#if value '===' '0'}}
+                        {{else}}
+                        <div style="display:flex;justify-content: space-between;border-bottom:2px solid #cacaca;padding-bottom:15px">
+                                <span style="color:red">Rebate Available: </span>
+                                <span  id="rebate_details" style="color:rgb(97, 97, 97);text-decoration: underline;cursor: pointer;">See details</span>
+                        </div>
+                        {{/if}}
+                        {{/if}}
+                        {{/each}}
+                       
+                </div> 
+         </div>
+</div>
+<style>
+        
+</style>
+<script>
+                // for scrolling up and down of thumbnail
+                $(document).ready(function () {
+                        var up = $('.fa-chevron-up');
+                        var down = $('.fa-chevron-down');
+                        up.click(function () {
+                              
+                        });
+                        var element = document.getElementById('#rebate');
+                        $('#rebate_details').click(function(){
+                               $('details').removeClass('panel-active');
+                               $('details').removeAttr('open');
+                               $('[rebate-idd]').addClass('panel-active');
+                               $('[rebate-idd]').attr('open' ,' ');
+                               element.scrollIntoView({behavior: "smooth", block: "center", inline: "start"});
+                        });
+                      
+                });
+</script>

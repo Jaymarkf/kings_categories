@@ -1,0 +1,616 @@
+<script> 
+	$(document).ready(function(){
+	  $(".finance-btn").click(function(){
+	    $("#financing-overlay").show(500);
+	  });
+	  $("#financing-overlay").click(function(){
+	    $("#financing-overlay").hide(500);
+	  });
+	  $(".shipping-btn").click(function(){
+	    $("#shipping-overlay").show(500);
+	  });
+	  $("#shipping-overlay").click(function(){
+	    $("#shipping-overlay").hide(500);
+	  });
+	//     $(".ask-for-price-overlay").click(function(){
+	//     $("#ask-for-price-overlay").show(500);
+	//   });
+	  $(".ask-for-price-exit").click(function(){
+	    $("#ask-for-price-overlay").hide(500);
+	  });
+	});
+</script> 
+<style>
+	.productview-images-custom .productView-image{
+		border:none;
+	}
+</style>
+<div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
+	
+	<div class="rev">
+		<section class="col-prod productview-images-custom" data-image-gallery>
+				{{!--
+				Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
+				for variant/rule image replacement
+				--}}
+			<div class="imgcontainer-productpage" style="text-align:center;width: calc(100vw - 240%);border: 1px solid #cccccc;">
+				<div style="text-align:center;margin-top:2%;">
+					{{#if product.brand}}
+					<img class="cardlogoimage {{sku}} " src="/product_images/uploaded_images/{{toLowerCase (dashcase product.brand.name)}}.jpg">
+					{{/if}}
+				</div>
+				<div class="product-image">
+					<figure class="productView-image"
+					data-image-gallery-main
+					{{#if product.main_image}}
+					data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+					{{/if}}
+					>
+						<div class="productView-img-container">
+							{{!-- Remove the surrounding a-element if there is no main image. --}}
+							{{#if product.main_image}}
+							<a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
+							target="_blank"{{#if schema}} itemprop="image"{{/if}}>
+							{{/if}}
+							{{> components/common/responsive-img
+							image=product.main_image
+							class="productView-image--default"
+							fallback_size=theme_settings.product_size
+							lazyload=theme_settings.lazyload_mode
+							default_image=theme_settings.default_image_product
+							otherAttributes="data-main-image"
+							}}
+							{{!-- Remove the surrounding a-element if there is no main image. --}}
+							{{#if product.main_image}}
+							</a>
+							{{/if}}
+						</div>
+					</figure>
+				</div>
+			</div>
+				
+			<!-- thumnail button scroll y -->
+			<div>
+		
+				<ul class="productView-thumbnails" >
+					<div data-slick='{
+						"infinite": false,
+						"mobileFirst": true,
+						"dots": false,
+						"accessibility": false,
+						"slidesToShow": 1,
+						"slidesToScroll": 1,
+						"vertical": false,
+						"responsive": [
+							{
+							"breakpoint": 768,
+							"settings": {
+								"slidesToShow": 4,
+								"slidesToScroll": 3,
+								"vertical":true
+							               }
+							},
+							{
+							"breakpoint": 550,
+							"settings": {
+								"slidesToShow": 2,
+								"slidesToScroll": 2
+								
+							}
+							},
+							{
+							"breakpoint": 350,
+							"settings": {
+								"slidesToShow": 1,
+								"slidesToScroll": 1
+
+							}
+							}
+						]							
+					}'>
+						{{#each product.images}}
+							<li>
+								<a
+									class="productView-thumbnail"
+									href="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+									data-image-gallery-item
+									data-image-gallery-new-image-url="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+									data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+									data-image-gallery-zoom-image-url="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+									>
+									{{> components/common/responsive-img
+									image=this
+									fallback_size=../theme_settings.productview_thumb_size
+									lazyload=../theme_settings.lazyload_mode
+									}}
+								</a>
+							</li>
+						{{/each}}
+					</div>
+				</ul>
+		
+			</div>
+			
+			<script>
+				(function($) {
+				$(document).ready(function () {
+				//SLIDE UP
+				jQuery("#arrowup").on("click", function () {
+				var $ul = $('#inline_navigation');
+				var y = $ul.scrollTop();
+				var $firstChild = $ul.children().first();
+				var step = $firstChild.outerHeight() + parseInt($firstChild.css('marginBottom'),10);
+				
+				console.log('before up', y, step);
+				if (y >= 0) {
+				y -= step;
+				console.log('after up', y);
+				
+				$ul.stop().animate({
+					scrollTop: y
+				}, 100);
+				}
+				});
+				//SLIDE DOWN
+				$("#arrowdown").on("click", function () {
+				var $ul = $('#inline_navigation');
+				var y = $ul.scrollTop();
+				var h = $ul.height();
+				var $firstChild = $ul.children().first();
+				var step = $firstChild.outerHeight() + parseInt($firstChild.css('marginBottom'),10);
+				
+				console.log('before down', y, step);
+				if (h >= y) {
+				y += step;
+				console.log('after down', y);
+				
+				$ul.stop().animate({
+					scrollTop: y
+				}, 100);
+				}
+				});
+				});
+				}(jQuery));
+			</script>
+		</section>
+		<section class="col-prod productview-description-custom">
+			<div class="product-description-container">
+				<h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+				<p id="brandmodel">
+					<strong style="color:#757575;">Brand: {{product.brand.name}}</strong><strong id="model-sku" style="color:#757575;margin-left:auto;padding-left:1%">Model No.: {{product.sku}}</strong></p>
+				<div  class="stamp-container" style="display:flex;justify-content: space-between;align-items: center;">
+					<div>
+						<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+					</div>
+					<span id="label_reviews">
+						(No ratings yet)
+					</span>
+				</div>
+				{{product.detail_messages}}
+				<div class="product-features" style="border-bottom: 1px solid #cacaca;padding-bottom:10px;">
+					{{#eachIndex (split product.description '<!-- split -->')}}
+					{{#if index '==' '3' }} 
+					<!-- {{{item}}}<span class="read-more-product-page">more features</span>-->
+					{{{item}}}
+					{{/if}}
+					{{/eachIndex}}
+				</div>
+				<div class="productview-quick-specs">
+					<h4 style="margin-top:5px;">Quick specs:</h4>
+					<ul>
+						<li>Type: {{#each categories}}
+								{{#if is_active}}
+								{{assignVar "base" name}}
+									{{#each children}}
+									{{#if is_active}}
+									 {{getVar "base"}} - {{name}}
+									{{/if}}
+									{{/each}}
+								{{/if}}		
+							{{/each}}
+						</li>
+						{{#each product.custom_fields}}
+							{{#if name '===' "Height"}}
+								<li>Height: {{value}} in</li>
+							{{/if}}
+							{{#if name '===' "Width"}}
+								<li>Width: {{value}} in</li>
+							{{/if}}
+							{{#if name '===' "Depth"}}
+								<li>Depth: {{value}} in</li>
+							{{/if}}
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>
+	<section class="col-prod productview-details-custom" style="width:35%; padding-left:2%;">
+		<div style="border:1px solid #dadada;">
+			<div class="productView-product">
+				<div class="product-badge" style="flex-wrap:wrap">
+					<div>
+						<img src="{{cdn 'img/badges/deal-match.png'}}" alt="">
+					</div>
+					{{#inArray product.category "Delivery Express"}}
+					<div><img src="{{cdn 'img/badges/delivery-express.png'}}" alt=""></div>
+					{{/inArray}}
+					<div class="apply-financing">
+						<div class="financing-div finance-btn" style="cursor:pointer">
+							<img src="{{cdn 'img/badges/financing.png'}}" alt="">
+							<span>Apply for<br style="display:block !important;">Financing</span>
+						</div>
+					</div>
+					{{#if product.price.without_tax.formatted '===' '$999,999.00'}}
+					{{else}}
+					{{#gt product.stock_level 10000}}
+						<div style="width:100%;display:block;position: relative;text-align: center;">
+							<span style="color:red;font-size:16px;font-style:italic;">
+								Call us for estimated delivery date
+							</span>
+						</div>	
+					{{/gt}}
+					{{/if}}
+					
+				</div>
+				
+			<!--
+				{{#if product.brand}}
+				
+				<img class="cardlogoimage" src="{{cdn 'img/brands/Whirlpool.png'}}" onload="this.onload=null; this.src=imgRender('{{product.brand.name}}');" />
+				{{/if}}
+				<script>
+				function imgRender(brand){
+				var img_src =  "{{cdn 'img/Whirlpool.png'}}";
+				return img_src.replace('Whirlpool', brand);
+				}
+				</script>
+				-->
+			{{#if product.price.without_tax.formatted '===' '$999,999.00'}}
+			<script src ="https://form.jotform.com/static/feedback2.js" type="text/javascript"></script><script type="text/javascript">
+				var JFL_201911524199051 = new JotformFeedback({
+				formId: '201911524199051',
+				base: 'https://form.jotform.com/',
+				windowTitle: 'Request Quotation',
+				background: '#d22229',
+				fontColor: '#FFFFFF',
+				type: '0',
+				height: 600,
+				width: 600,
+				openOnLoad: false
+				});
+			</script>
+		<a class="btn lightbox-201911524199051 ask-for-price-overlay" style="margin-top: 16px">
+			ASK FOR PRICE
+			</a>
+			<!--<a class="ask-for-price-overlay">ASK FOR PRICE</a>-->
+			
+	{{else}}
+		{{#gt product.stock_level 10000}}
+			<div class="productview-price">
+				{{#if product.call_for_price}}
+				<p class="productView-price">
+					<span>{{product.call_for_price}}</span>
+				</p>
+				{{/if}}
+				<div class="productView-price">
+					{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+					{{> components/products/price price=product.price schema_org=schema}}
+					{{else}}
+					{{> components/common/login-for-pricing}}
+					{{/or}}
+				</div>
+				{{{region name="product_below_price"}}}
+			</div>
+			
+			{{#each product.custom_fields}}
+			{{#if name '===' 'Rebate IDs'}}
+			{{#if value '===' '0'}}
+			{{else}}
+			<div style="display:flex;justify-content: space-between;padding-left:3%;padding-right:3%">
+			        <span style="color:red">Rebate Available: </span>
+			        <span  id="rebate_details" style="color:rgb(97, 97, 97);text-decoration: underline;cursor: pointer;">See details</span>
+			</div>
+			{{/if}}
+			{{/if}}
+			{{/each}}
+			
+			<div class="productView-options">
+			{{#if product.release_date }}
+			<p>{{product.release_date}}</p>
+			{{/if}}
+			<form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+				data-cart-item-add>
+				<input type="hidden" name="action" value="add">
+				<input type="hidden" name="product_id" value="{{product.id}}"/>
+				<div class="productview-options-dynamic" data-product-option-change style="display:none;">
+					{{#each product.options}}
+					{{{dynamicComponent 'components/products/options'}}}
+					{{/each}}
+				</div>
+				<div class="productpage-actions flex-div-productActions">
+					<div class="cart-button-productActions">
+						<!--<div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">-->
+						<!--</div>-->
+						{{#if product.can_purchase}}
+						{{> components/products/add-to-cart}}
+						{{/if}}
+						{{#if product.out_of_stock}}
+						{{#if product.out_of_stock_message}}
+						{{> components/common/alert-error product.out_of_stock_message}}
+						{{else}}
+						{{> components/common/alert-error (lang 'products.sold_out')}}
+						{{/if}}
+						{{/if}}
+					</div>
+				</div>
+			</form>
+			{{> components/common/wishlist-dropdown}}
+			</div>
+		{{else}}        
+			<div class="price-container">
+				<div class="xx">
+				{{#if product.call_for_price}}
+				<p class="xx">
+					<span> {{product.call_for_price}}</span>
+				</p>
+				{{/if}}
+				<div class="xx">
+					{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+					{{> components/products/price price=product.price schema_org=schema is_category=false}}
+					{{else}}
+					{{> components/common/login-for-pricing}}
+					{{/or}}
+				</div>
+				{{{region name="product_below_price"}}}
+				</div>
+			</div>
+			{{#each product.custom_fields}}
+			{{#if name '===' 'Rebate IDs'}}
+			{{#if value '===' '0'}}
+			{{else}}
+			<div style="display:flex;justify-content: space-between; padding-left:3%; padding-right:3%;">
+			        <span style="color:red">Rebate Available: </span>
+			        <span  id="rebate_details" style="color:rgb(97, 97, 97);text-decoration: underline;cursor: pointer;">See details</span>
+			</div>
+			{{/if}}
+			{{/if}}
+			{{/each}}
+		
+			
+			</div>
+			<div class="productView-options">
+			{{#if product.release_date }}
+			<p>{{product.release_date}}</p>
+			{{/if}}
+			<form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+				data-cart-item-add>
+				<input type="hidden" name="action" value="add">
+				<input type="hidden" name="product_id" value="{{product.id}}"/>
+				<div class="productview-options-dynamic" data-product-option-change style="display:none;">
+					{{#each product.options}}
+					{{{dynamicComponent 'components/products/options'}}}
+					{{/each}}
+				</div>
+				<div class="productpage-actions flex-div-productActions">
+					<div class="cart-button-productActions">
+						<!--<div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">-->
+						<!--</div>-->
+						{{#if product.can_purchase}}
+						{{> components/products/add-to-cart}}
+						{{/if}}
+						{{#if product.out_of_stock}}
+						{{#if product.out_of_stock_message}}
+						{{> components/common/alert-error product.out_of_stock_message}}
+						{{else}}
+						{{> components/common/alert-error (lang 'products.sold_out')}}
+						{{/if}}
+						{{/if}}
+					</div>
+				</div>
+			</form>
+			
+		</div>
+		{{> components/common/wishlist-dropdown}}
+		{{/gt}}
+		{{/if}}
+
+		</div>
+	</section>
+</div>
+                                         <!-- END OF PRODUCT ROW -->
+<div class="value-proposition" style="margin-bottom:2%;">
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/price.png'}}"/>
+		</div>
+		<div>
+			<h3>Unbeatable Prices</h3>
+			<p>
+				Great deals everyday
+			</p>
+		</div>
+	</div>
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/service.png'}}"/>
+		</div>
+		<div>
+			<h3>Great Service</h3>
+			<p>
+				Helpful & Professional
+			</p>
+		</div>
+	</div>
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/selection.png'}}"/>
+		</div>
+		<div>
+			<h3>Wide Selection</h3>
+			<p>
+				Top brands you'll love
+			</p>
+		</div>
+	</div>
+	<div class="value-proposition-item">
+		<div>
+			<img src="{{cdn '/assets/img/product-page/trust.png'}}"/>
+		</div>
+		<div>
+			<h3>Community Trust</h3>
+			<p>
+				Locally owned & operated
+			</p>
+		</div>
+	</div>
+</div>
+
+{{#each product.custom_fields}}
+    {{#if name '===' 'Giftcard'}}
+    {{#if value '===' 'Yes'}}
+
+<div class="product-page-giftcard-banner">
+   <a href="/contact-us"> <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-gift-card-02-10-2021-2-.png"> </a>
+</div>
+    
+{{/if}}
+{{/if}}
+{{/each}}
+
+
+<div product-description-tabs>
+	<article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
+	{{#if theme_settings.show_product_details_tabs}}
+	{{> components/products/description-tabs}}
+	{{else}}
+	{{> components/products/description}}
+	{{/if}}
+	</article>
+</div>
+<div id="previewModal" class="modal modal--large" data-reveal>
+	<a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+	<span aria-hidden="true">&#215;</span>
+	</a>
+	<div class="modal-content"></div>
+	<div class="loadingOverlay"></div>
+</div>
+<div id="financing-overlay" style="z-index:999;display:none;position:fixed;top:0;left:0;width:100%;height:100%;">
+	<div class="overlay-financing">
+		<h2>Financing</h2>
+		<p>
+			At Kings Great Buys Plus, we greatly honor the needs of our customers. To meet our customers needs, we offer a 
+			wide range of financing options. Whether it is regular financing through lenders such as Wells Fargo or other lending programs 
+			from other sources, we can help you get the electronic, appliance, or furniture item you need.
+		</p>
+		<a href="/financing/">LEARN MORE</a>
+	</div>
+</div>
+<div id="shipping-overlay" style="z-index:999;display:none;position:fixed;top:0;left:0;width:100%;height:100%;">
+	<div class="overlay-shipping">
+		<h2>Free Shipping</h2>
+		<p>
+			King's will deliver all appliance, furniture, or bedding orders of at least $499.99 of value for free within a 20-mile radius of any King's location. 
+			All other purchases will be charged $99.99 for delivery services. Installation services vary on product type and location.
+		</p>
+		<a href="/delivery/">LEARN MORE</a>
+	</div>
+</div>
+<div id="ask-for-price-overlay" style="z-index:999;display:none;position:fixed;top:0;left:0;width:100%;height:100%;">
+	<div class="overlay-financing">
+		<a class="ask-for-price-exit">X</a>
+		<h2>Want a quotation of {{product.title}}?</h2>
+		<form action="mailto:Support@kingsgreatbuys.com" method="post" enctype="text/plain">
+			<div class="form-row form-row--half">
+				<div class="form-field">
+					<input class="form-input" type="text" id="product_name" name="product_name" value="{{product.title}}" readonly>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="product_sku"  name="product_sku" value="{{product.sku}}" readonly>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="fullname" name="fullname" placeholder="Full Name" value="{{customer.name}}" required>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="phone" placeholder="Phone" name="Phone" value="{{customer.phone}}" required>
+				</div>
+				<div class="form-field">
+					<input class="form-input" type="text" id="email" placeholder="Email" name="Email" value="{{customer.email}}" required>
+				</div>
+				<div class="form-field">
+					<input class="form-input" placeholder="Company" type="text" id="contact_companyname" name="Company" required>
+				</div>
+			</div>
+			<div class="form-field">
+				<textarea name="Comment/Question" id="contact_question" placeholder="Message" rows="5" cols="50" class="form-input"></textarea>
+			</div>
+			<div class="form-actions">
+				<input class="button button--primary" type="submit" value="{{lang 'forms.contact_us.submit' }}">
+			</div>
+		</form>
+	</div>
+</div>
+<!--
+	<script>
+	$(function () {
+	    $('.read-more-product-page').click(function () {
+	        $('#datalist li:hidden').slice(0).show();
+	        if ($('#datalist li').length == $('#datalist li:visible').length) {
+	            $('.read-more-product-page').hide();
+	        }
+	    });
+	});
+	</script>
+	-->
+<script>
+	   $(document).ready(function () {
+                        var element = document.getElementById('#rebate');
+                        $('#rebate_details').click(function(){
+                               $('details').removeClass('panel-active');
+                               $('details').removeAttr('open');
+                               $('[rebate-idd]').addClass('panel-active');
+                               $('[rebate-idd]').attr('open' ,' ');
+                               element.scrollIntoView({behavior: "smooth", block: "center", inline: "start"});
+                        });
+                      
+                });
+
+
+
+	       //to automate star reviews in product description
+function addEventListenerStamped(el, eventName, handler) { 
+   if (el.addEventListener) { el.addEventListener(eventName, handler); }
+   else { el.attachEvent('on' + eventName, function () { handler.call(el); }); } 
+}
+
+// Listening for event
+addEventListenerStamped(document, '##replaceWithEventName##', function(e) {
+
+});
+
+// Example
+// Listening for reviews widget loaded event
+addEventListenerStamped(document, 'stamped:reviews:loaded', function(e) {
+	var count = $('#tab-reviews').attr('data-count');
+	var reviews = $('#label_reviews');
+	var str = '';
+	if(count < 1 ){
+		str  = '( No ratings yet )';	
+	}else{
+		str = '(' + count + ' reviews )';
+	}
+	reviews.text(str);
+});
+
+//for text align teh extended warranty and color options center
+//it really hurts to style this one in script T_T
+
+$('div.form-field[data-product-attribute=swatch]').css('padding-right','3%');
+$('div.form-field[data-product-attribute=set-rectangle]').css('padding-left','3.4%');
+$('div.form-field[data-product-attribute=set-rectangle]').css('text-align','center');
+</script>
+<style>
+	.form-option{
+		margin-right:0 !important;
+	}
+</style>

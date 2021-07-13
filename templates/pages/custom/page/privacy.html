@@ -1,0 +1,22 @@
+{{#partial "page"}}
+
+<main class="page cms">
+    
+   <div class="privacy-banner">
+        <h1 class="page-heading">{{ page.title }}</h1>
+    </div>
+
+    <div class="page-content privacy">
+        <h1>Website Privacy Statement</h1>
+        <p>This document was last updated on May 13th, 2017.</p>
+        <div class="privacy-content">
+           {{{page.content}}}
+        </div>
+    </div>
+
+
+</main>
+
+{{/partial}}
+
+{{> layout/cms-base}}

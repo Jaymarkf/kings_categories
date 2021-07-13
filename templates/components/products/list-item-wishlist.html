@@ -1,0 +1,119 @@
+{{#if settings.data_tag_enabled}}
+    <article class="listItem" data-event-type="{{event}}" data-entity-id="{{id}}" data-position="{{position}}" data-name="{{name}}" data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{brand.name}}" data-product-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}">
+{{else}}
+    <article class="listItem">
+{{/if}}
+    <figure class="listItem-figure">
+        {{> components/common/responsive-img
+            image=image
+            class="listItem-image"
+            fallback_size=theme_settings.productgallery_size
+            lazyload=theme_settings.lazyload_mode
+            default_image=theme_settings.default_image_product
+        }}
+           <!--<a class="list-free-shipping">Free Shipping</a>-->
+       
+    </figure>
+    <div class="listItem-body">
+        <div class="listItem-content">
+            <div class="listItem-details">
+                
+                
+    {{#if brand.name}}
+                 <img class="cardlogoimage" src="{{cdn (concat 'img/brands/' (concat brand.name '.jpg'))}}"  />
+    {{/if}}
+                     
+        
+                <h4 class="listItem-title">
+                    <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
+                </h4>
+                
+               <p style="color:#757575;margin-bottom:.3rem;"><strong>Model No.: &nbsp;{{sku}}</strong></p>
+               
+               <!--{{#if stock_level '==' '0'}}-->
+               <!--{{else}}-->
+               <!--<p class="on-stack">In Stock!</p>-->
+               <!--{{/if}}-->
+              
+
+               
+                
+     
+                
+       
+        <div class="productView-options">   
+                <div data-product-option-change style="display:none;">
+                    {{#each options.name}}
+                        {{{dynamicComponent 'components/products/options'}}}
+                    {{/each}}
+                </div> 
+        </div>
+                
+<div class="list-item-below">            
+<div class="left-list-below">
+        <div>
+          <img class="" src="{{cdn 'assets/img/category/check.png'}}"> Free In-Store Pickup
+        </div>
+            
+        <div>
+            <img class="" src="{{cdn 'assets/img/category/check.png'}}"> Free Shipping
+        </div>
+</div>
+<div class="right-lest-below">
+        <div>
+          <a class="">Request More Info</a>
+        </div>
+</div>
+</div>           
+   
+            </div>
+            
+             {{#or (if price.without_tax.formatted '===' '$999,999.00') (if stock_level '==' '999999999')}} {{else}}
+            <div class="listItem-actions">
+
+                <div>
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{#if price}}
+                        <div class="listItem-price">{{> components/products/price price=price}}</div>
+                    {{/if}}
+             
+                 
+
+                    
+                    
+                    {{#if show_cart_action}}
+                        {{#if has_options}}
+                            <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
+                    
+            
+                        {{/if}}
+                    
+
+                        {{#if pre_order}}
+                            <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small">{{lang 'products.pre_order'}}</a>
+                        {{/if}}
+                        {{#if add_to_cart_url }}
+                            <a href="{{add_to_cart_url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small">{{lang 'products.add_to_cart'}}</a>
+                        {{/if}}
+                        {{#if out_of_stock_message }}
+                            <a href="{{url}}" data-event-type="product-click" class="button button--small" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+                        {{/if}}
+                        <div class="wish-remove-button">
+                    <form action="{{remove_url}}" class="form" method="post">
+                <input type="submit" class="button button--primary button--small" value="{{lang 'account.wishlists.remove_item'}}" />
+            </form>
+                        </div>
+                    {{/if}}
+                    
+
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+                
+                </div>
+            </div>
+            {{/or}}
+            
+        </div>
+    </div>
+</article>

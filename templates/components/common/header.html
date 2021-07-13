@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<header class="header" role="banner">
+    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+        <span class="mobileMenu-toggleIcon">Toggle menu</span>
+    </a>
+    {{> components/common/custom-navigation}}
+<div class="header-logo header-logo--{{theme_settings.logo-position}}">
+    <div class="header-logo-section">
+        <div>
+            {{> components/common/store-logo}}
+           
+        </div> 
+        <div class="search-logo_header">
+             {{> components/common/search-header}}
+        </div>
+        <div>
+            {{> components/common/navigation}}
+        </div>
+    </div>
+</div>
+    <div class="navPages-container" id="menu" data-menu>
+        {{> components/common/logo-navigation}}
+    </div>
+    
+   
+    
+<div id="stick-navbar">
+
+    <div class="navPages-container" id="menu" data-menu>
+        {{> components/common/logo-navigation}}
+    </div>
+</div>
+    
+</header>
+<!--
+<div class="Covid-banner">
+  <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/covid-png.png?t=1596000700&_ga=2.87819933.466510793.1595982495-2022119561.1571639426">  <p>Due to COVID 19 product supply has dropped worldwide. If you are not seeing an item of interest please <a href="/locations">contact your local King's</a> and we will be glad to help to the best of our abilities!</p>
+</div>
+-->
+
+<!--
+<div class="Promo-Banner">
+<img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/appliancenov.png?t=1605501098&_ga=2.176580389.1400343416.1605488395-2022119561.1571639426">
+<div><h3>TV & APPLIANCES</h3>
+    <h1>BLACK FRIDAY ALL NOVEMBER!</h1>
+</div>
+<a class="shopNow_promoBanner" href="/brands/">Shop Now</a>
+</div>
+-->
+
+
+{{{region name="header_bottom"}}}

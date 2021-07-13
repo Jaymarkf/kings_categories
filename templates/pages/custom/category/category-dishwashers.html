@@ -1,0 +1,136 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if category.image}}
+    {{> components/common/responsive-img
+        image=category.image
+        fallback_size=theme_settings.zoom_size
+        lazyload=theme_settings.lazyload_mode
+        class="category-header-image"
+    }}
+{{/if}}
+{{#unless theme_settings.hide_category_page_heading }}
+      
+    
+{{/unless}}
+{{{category.description}}}
+<script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+<div class="page">
+    <style>
+  
+        .category-box{
+            padding:0 !important;
+            border-radius: 0  !important;
+            margin: 1% 1% !important;
+            position:relative;
+            border: none !important;
+            width:31.333333%;
+
+        }
+        .category-box a{
+            text-decoration: none;
+        }
+      .category-box img.image-hover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  
+    .hh:hover img.image-hover {
+      opacity: 1;
+    }
+    /* .category-box:hover .x{
+        display:none !important;
+    } */
+    .categ-desc{
+        position:relative;
+        display:block;
+        text-align:center;
+        display:flex !important;align-items: center;
+        justify-content: center;
+        margin-top:5%;
+    }
+    html,body{
+        height:100%;
+    }
+    .img-container{
+        background-color:#f0f0f0;
+    }
+    .row-block{
+        display:block !important;
+        text-decoration: underline;
+    }
+       .pz:hover .z{
+        opacity: 0;
+    } 
+    </style>
+ <main class="page-content" id="product-listing-container">
+     <a href="/at-t/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/category/categ-banner.jpg')}}"></a>
+          <h2 class="landing-title"></h2>
+
+        <div class="main-landing">
+            <div class="category-box">
+                <a href="https://kingsgreatbuys.com/dishwashers/built-in-dishwasher/" class="hh pz">
+                    <div class="img-container">
+                        <img class="Sirv image-main z" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/built-in-dishwashers-image-only.png?t=1623733454&_ga=2.87149840.966636835.1623632807-624579995.1618214792">
+                        <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/built-in-dishwashers-flip-1-.png?t=1623733456&_ga=2.87149840.966636835.1623632807-624579995.1618214792">
+                    </div>
+                </a>
+                    <div class="categ-desc">
+                        <div>
+                            <h1 class="row x ta">Built-in Dishwashers</h1>
+                            <span class="row x tx">
+                                <!-- Show our wide variety of refrigerators,<br>freezers, and chillers -->
+                            </span>
+                        </div>    
+                    </div>
+              
+            </div>
+            
+            <div class="category-box">
+                <a href="https://kingsgreatbuys.com/dishwashers/portable-dishwasher/" class="hh pz">
+                    <div class="img-container">
+                        <img class="Sirv image-main" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/portable-dishwashers-image-only.png?t=1623733531&_ga=2.19987888.966636835.1623632807-624579995.1618214792">
+                        <img class="Sirv image-hover" style="width:100%" data-sizes="auto" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/portable-dishwashers-flip-1-.png?t=1623733533&_ga=2.19987888.966636835.1623632807-624579995.1618214792">    
+                    </div>
+                </a>
+                    <div class="categ-desc">
+                        <div>
+                            <h1 class="row x ta">Portable Dishwashers</h1>
+                            <span class="row x tx">
+                               <!-- Complete your kitchen with a<br> state-of-the-art dishwasher available<br>
+                               in a built-in or portaable configuration. -->
+                            </span>
+                        </div>    
+                    </div>
+                
+            </div>
+           
+        </div>
+    
+     
+    </main>
+</div>
+{{/partial}}
+{{> layout/category-base}}

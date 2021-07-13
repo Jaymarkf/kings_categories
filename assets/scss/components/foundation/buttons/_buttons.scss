@@ -1,0 +1,34 @@
+// =============================================================================
+// BUTTONS (CSS)
+// =============================================================================
+
+.button {
+    line-height: 1rem;
+    transition: all 0.15s ease;
+
+    + .button {
+        margin-left: 0;
+
+        @include breakpoint("medium") {
+            margin-left: spacing("half");
+        }
+    }
+}
+
+.button[disabled] {
+    cursor: not-allowed;
+}
+
+.button--icon {
+
+    svg {
+        fill: stencilColor("button--icon-svg-color");
+    }
+}
+//add to compare button
+.xx{
+    margin-left:0 !important;
+    margin-top:10px !important;
+    left:-10px;
+    
+}

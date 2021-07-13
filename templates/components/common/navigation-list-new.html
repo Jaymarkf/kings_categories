@@ -1,0 +1,35 @@
+{{#if children}}
+        <a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" href="{{url}}" style="white-space:nowrap;">
+            <!-- <img class="nav-image" src="{{cdn (concat 'img/homepage/' (concat name '.png'))}}"  /> -->
+            <span style="white-space: nowrap;">{{name}}</span>
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </a>
+
+    <div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+        <div class="navChild_name">
+            <h2>{{name}}</h2>
+                <a class="navPage-subMenu-action navPages-action" href="{{url}}" style="margin-left:5% !important;">SHOP ALL 
+                    <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/chevron-right-solid-red-.png">
+                </a>
+        </div> 
+        <ul class="gg">
+            {{#each children}}
+                <li>
+                        <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">
+                            <img class="" src="{{cdn (concat 'img/nav/' (concat  (lowercase (dashcase name)) '.png'))}}"  />
+                            <span style="margin-left:10%;">{{name}}</span>
+                        </a>
+                </li>
+            {{/each}}
+        </ul> 
+    </div>
+{{else}}
+    {{#if name '==' 'Delivery Express'}}
+        <a href="/delivery-express/" class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}" style="white-space:nowrap;margin-right:2%;margin-left:1%;">
+            <!-- <img class="nav-image" src="{{cdn 'assets/img/homepage/delivery-express.png'}}"  />  -->
+            <span style="white-space: nowrap;">{{name}}</span>
+        </a>
+    {{/if}}
+{{/if}}
+
+

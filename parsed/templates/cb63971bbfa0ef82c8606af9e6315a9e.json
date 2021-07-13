@@ -1,0 +1,1 @@
+{"components/common/brandlogo":"<img src=\"{{concat 'img/' brand.name '.png'}}\" alt=\"\">\r\n"}

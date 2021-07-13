@@ -1,0 +1,108 @@
+<ul id="Refrigerators" class="productList">
+    {{#each products}}
+		{{#eachIndex category}}
+			{{#if index '==' '0' }} 
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{else}}	
+					
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{/if}}
+		{{/eachIndex}}
+						{{>components/products/list-item-express show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event settings=../settings position=(add @index 1)}}
+					</li>
+    {{/each}}
+</ul>
+<ul id="Laundry" class="productList">
+    {{#each products}}
+		{{#eachIndex category}}
+			{{#if index '==' '0' }} 
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{else}}	
+					
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{/if}}
+		{{/eachIndex}}
+						{{>components/products/list-item-express show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event settings=../settings position=(add @index 1)}}
+					</li>
+    {{/each}}
+</ul>
+<ul id="Dishwashers" class="productList">
+    {{#each products}}
+		{{#eachIndex category}}
+			{{#if index '==' '0' }} 
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{else}}	
+					
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{/if}}
+		{{/eachIndex}}
+						{{>components/products/list-item-express show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event settings=../settings position=(add @index 1)}}
+					</li>
+    {{/each}}
+</ul>
+
+<ul id="Cooking" class="productList">
+    {{#each products}}
+		{{#eachIndex category}}
+			{{#if index '==' '0' }} 
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{else}}	
+					
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{/if}}
+		{{/eachIndex}}
+						{{>components/products/list-item-express show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event settings=../settings position=(add @index 1)}}
+					</li>
+    {{/each}}
+</ul>
+<ul id="Electronics" class="productList">
+    {{#each products}}
+		{{#eachIndex category}}
+			{{#if index '==' '0' }} 
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{else}}	
+					
+				 {{#inArray (split item '/') "Delivery Express"}}
+				{{else}}
+					  <li  class="product {{first (split item '/')}}">
+				{{/inArray}}
+			{{/if}}
+		{{/eachIndex}}
+						{{>components/products/list-item-express show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event settings=../settings position=(add @index 1)}}
+					</li>
+    {{/each}}
+</ul>
+<script>
+        $(".fword").each(function() {
+             if($(this).html().indexOf('Description') > -1 ){
+                $(this).html( $(this).html().split('Description').join('<label class="summary-description"><strong>Description</strong></label><br>'));
+            }
+        });
+</script>

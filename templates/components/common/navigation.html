@@ -1,0 +1,34 @@
+
+<nav class="navUser">
+    {{> components/common/currency-selector}}
+    <ul class="navUser-section navUser-section--alt">
+            <li class="navUser-item">
+                <!-- <img src="{{getImage image 'thumb_size' (cdn 'assets/img/header/location.png')}}"> -->
+                <a href="/location/"><i class="fa fa-map-marker navigation_icons" aria-hidden="true"></i></a>  
+                <a class="navUser-action" href="/location/">Find a Store</a>
+            </li>
+
+        <li class="navUser-item navUser-item--account">
+            <!-- <img src="{{getImage image 'thumb_size' (cdn 'assets/img/header/account.png')}}"> -->
+                <a href="{{urls.account.index}}"><i class="fa fa-user-circle-o navigation_icons" aria-hidden="true"></i></a>
+                <a class="navUser-action" href="{{urls.account.index}}">{{lang 'common.account'}}</a>
+        </li>
+        
+        <li class="navUser-item navUser-item--cart">
+             <!-- <img src="{{getImage image 'thumb_size' (cdn 'assets/img/header/cart.png')}}"> -->
+             <a href="{{urls.cart}}"><i class="fa fa-shopping-cart navigation_icons" aria-hidden="true"></i></a>
+            <a
+                class="navUser-action"
+                data-cart-preview
+                data-dropdown="cart-preview-dropdown"
+                data-options="align:right"
+                href="{{urls.cart}}">
+                <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span> <span class="countPill cart-quantity"></span>
+            </a>
+            <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+        </li>
+    </ul>
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
+        {{> components/common/quick-search}}
+    </div>
+</nav>

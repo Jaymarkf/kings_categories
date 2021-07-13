@@ -1,0 +1,137 @@
+{{#if banners.bottom}}
+    {{#if settings.data_tag_enabled}}
+        <div class="banners" data-banner-location="bottom">
+            {{#each (limit banners.bottom_metadata 1)}}
+                <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                    <div data-event-type="promotion-click">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="banners" data-banner-location="bottom">
+            <div class="banner">
+                {{{limit banners.bottom 1}}}
+            </div>
+        </div>
+    {{/if}}
+
+{{/if}}
+
+<!-- for compare products  after checking the add to compare -->
+{{> components/products/sticky-product-compare}}
+<div class="newsletter-home-section">
+ 
+{{> components/common/subscription-form}}
+
+</div>
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
+            <article class="footer-info-col
+                footer-info-col--social
+                footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
+                data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
+                    {{> components/common/social-links}}
+            </article>
+        {{/if}}
+        <section class="footer-info">
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">Company Information</h5>
+                <ul class="footer-info-list company-info">
+                  
+                  
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/about-us/">About Us</a>
+                    </li>
+                    <li>
+                        <a href="/delivery/">Delivery</a>
+                    </li>
+                    <li>
+                        <a href="/deal-match/">Deal Match</a>
+                    </li>
+                    <li>
+                        <a href="/faqs/">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="/terms/">Terms of Use</a>
+                    </li>
+                    <li>
+                        <a href="/privacy/">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="/product-demo/">Demonstration</a>
+                    </li>
+                    
+                    
+                </ul>
+              <div class="logo-social">
+                    <a href="https://www.facebook.com/greatbuysplus" target="_blank"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/footer/fb.png')}}"></a>
+                    <a href="https://www.youtube.com/user/KingsGreatBuysPlus" target="_blank"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/footer/youtube.png')}}"></a>
+                </div>
+            </article>
+
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-categories">
+                <h5 class="footer-info-heading">Shop Categories</h5>
+                <ul class="footer-info-list category-name">
+                    {{#each categories}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                </ul>
+                  <div class="accredited-img">
+                   <a href="https://www.bbb.org/us/in/evansville/profile/major-appliance-dealers/kings-great-buys-plusindiana-0482-90856#bbbseal" target="_blank"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/footer/accredited.png')}}"></a>
+                </div>
+            </article>
+
+
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
+                <h5 class="footer-info-heading">Current Promotions</h5>
+                <ul class="footer-info-list">
+                 
+                        <li>
+                            <a href="/current-ads/">Current Ads</a>
+                        </li>
+                      <li>
+                            <a href="/rebates/">Current Rebates</a>
+                        </li>
+                      <li>
+                            <a href="{{url}}">Extreme Values</a>
+                        </li>
+                      <li>
+                            <a href="/financing/">Financing</a>
+                        </li>
+                        <li>
+                            <a href="/disclaimer/">Disclaimer</a>
+                        </li>
+
+                </ul>
+            </article>
+
+
+            <article class="footer-info-col footer-info-col--small" data-section-type="storeInfo">
+                <h1 class="footer-shop-heading">Shop Smart.</h1>
+                <h1 class="footer-shop-heading last">Shop Local.</h1>       
+                <a href="/rebates/" class="footer-button">SHOP NOW</a>
+            </article>
+     
+
+            
+        </section>
+
+       
+
+     
+   
+    </div>
+    
+      <div class="footer-copyright">
+                <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} </p>
+            </div>
+</footer>

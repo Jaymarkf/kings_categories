@@ -1,0 +1,257 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "hero"}}
+    
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="main full">
+        
+    <div class="home-first-section">
+         <img class="animation-element slide-up delay-300" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/appliance.png')}}">
+        <div class="home-appliance-text">
+        <h1 class="animation-element slide-left">Appliances</h1>
+        <span class="animation-element slide-left">We offer the best selection from the most trusted names in home appliances such as Bosch, Frigidaire, KitchenAid, Maytag, and Whirlpool, among others. From gas ranges and cooktops to dishwashers and laundry dryers, King’s got it all for you.</span>
+        </div>
+    </div>
+    <div class="shop-now-white-section">
+        <div class="home-appliance-button">
+    <h2 class="animation-element slide-left delay-300">Top name brands in one place.
+</h2>
+        <a class="animation-element wiggle duration-2000 first-section-button" href="/appliances/">SHOP APPLIANCES</a>
+        </div>
+    </div>
+    <div class="home-second-section">
+       {{#if carousel}}
+        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+    {{/if}}
+    </div>
+    <div class="home-third-section">
+        <div class="brand-logo">
+            
+        <div class="animation-element slide-right logo-img">
+        <a href="/bosch/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/bosch.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-right logo-img">
+        <a href="/kitchenaid/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/kitchenaid.png')}}"></a>
+        </div>
+    
+        <div class="animation-element slide-right logo-img">
+        <a href="/lg/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/lg.png')}}"></a>
+        </div>
+            
+        <div class="animation-element slide-right logo-img">
+        <a href="/maytag/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/maytag.png')}}"></a>
+        </div>
+            
+        <div class="animation-element slide-right logo-img">
+        <a href="/whirlpool/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/whirlpool.png')}}"></a>
+        </div>
+
+        </div>
+    </div>
+
+    
+    
+    <div class="home-fourth-section">
+        <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/Bedding-home.jpg')}}">
+        <img class="fourth-section-overlap animation-element slide-down delay-400" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/bed.png')}}">
+        <div class="home-bedding-text">
+           <h1 class="animation-element slide-right delay-800">Sleep Products and Accessories</h1>
+        <span class="animation-element slide-right delay-800">Shop for your next mattress by comfort level, by size, or by material with King’s! Browse our wide range of bedding products from the industry’s top brands: Sealy, Serta, Simmons, and Tempur-Pedic. Your good night’s sleep is just one checkout away.</span>
+        </div>
+        <div class="home-bedding-button">
+        <h2 class="animation-element slide-right delay-800">Discover your comfort zone.
+</h2>
+        <a class="animation-element wiggle duration-2000 fourth-section-button" href="/bedding/">SHOP BEDDING</a>
+        </div>
+    </div>
+     <div class="home-fourth-logo-section">
+        <div class="brand-logo">
+            
+        <div class="animation-element slide-left logo-img">
+        <a href="/serta/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/serta.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-left logo-img">
+        <a href="/simmons/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/simmons.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-left logo-img">
+        <a href="/tempur-pedic/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/tempur.png')}}"></a>
+        </div>
+    
+        <div class="animation-element slide-left logo-img">
+        <a href="/sealy/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/sealy.png')}}"></a>
+        </div>
+
+        </div>
+    </div>
+    <div class="home-fifth-section">
+        <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/Electornics.jpg')}}">
+        <img class="fifth-section-overlap animation-element slide-up delay-500" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/tv.png')}}">
+        <div class="home-electronics-text">
+        <h1 class="animation-element slide-left">Electronics and Entertainment
+</h1>
+        <span class="animation-element slide-left">Indulge your senses with our eye-popping smart TVs and rich-sounding home theater setups from the world’s top-selling brands. Whether you're looking for an OLED TV from LG, a QLED TV from Samsung or the latest speaker from Klipsch, King’s got you covered
+</span>
+        </div>
+        <div class="home-electronics-button">
+        <h2 class="animation-element slide-down">Indulge in cutting-edge tech.
+</h2>
+        <a class="animation-element wiggle duration-2000 fifth-section-button" href="/electronics/">SHOP ELECTRONICS</a>
+        </div>
+    </div>
+    <div class="home-fifth-logo-section">
+        <div class="brand-logo">
+            
+        <div class="animation-element slide-right logo-img">
+        <a href="/samsung/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/samsung.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-right logo-img">
+        <a href="/lg/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/lg.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-right logo-img">
+        <a href="/sony/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/sony.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-right logo-img">
+        <a href="/klipsch/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/brands/Klipsch.png')}}"></a>
+        </div>
+
+        </div>
+    </div>
+      <div class="home-sixth-section">
+            <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/Furniture.jpg')}}">
+            <img class="sixth-section-overlap animation-element slide-left delay-500" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/sofa.png')}}">
+            <div class="home-furniture-text">
+              <h1 class="animation-element slide-right">Home Furnishings</h1>
+          <span class="animation-element slide-right">Furnish your dream house with King’s extensive catalog of high-quality furniture. Browse by room type or shop by function, from vanity tables by Liberty Furniture to reclining sofas by Home Stretch; decorating your home doesn’t get any better than with King’s.
+</span>
+            </div> 
+            <div class="home-furniture-button">
+          <h2 class="animation-element slide-right">Be inspired with modern designs.
+</h2>
+          <a class="animation-element wiggle duration-2000 sixth-section-button" href="/furniture/">SHOP FURNITURE</a>
+          </div>
+    
+    </div>
+    <div class="home-sixth-logo-section">
+        <div class="brand-logo">
+            
+        <div class="animation-element slide-left logo-img">
+        <a href="/catnapper/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/catnapper.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-left logo-img">
+        <a href="/hillsdale-furniture/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/hillsdale.png')}}"></a>
+        </div>
+        
+        <div class="animation-element slide-left logo-img">
+        <a href="/homestretch/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/home-stretch.png')}}"></a>
+        </div>
+    
+       
+            
+        
+            
+        <div class="animation-element slide-left logo-img">
+        <a href="/southern-motion/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/southern.png')}}"></a>	
+        </div>
+
+        </div>
+    </div>
+    <div class="home-seventh-section">
+    <div class="homepage-about row">
+        <div class="col-lg-6 col-md-6 col-sm-12 about-us-homepage">
+            <div>
+                <div>
+           <h1>About Us</h1>
+                <p>King’s Great Buys Plus is a leading retailer of electronics, appliances, beddings, and furniture since the opening of its first brick-and-mortar store in 1983. Three years later, the Great Buys Plus Corporation was founded in order to establish partnerships with other retailers and create a vast retail network. Today, with more than 40 stores spanning the Midwest, the King’s brand has become synonymous with high-quality products and excellent service. In early 2019, King’s launched its expanded online store to cater to customers from all over the country and beyond.</p>
+                <a href="/about-us/" class="more-about">More About Us</a>
+            </div>
+                </div>
+        </div>    
+        <div class="col-lg-6 col-md-6 col-sm-12 img-homepage">
+            <div class="about-image">
+                <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/about-us.png')}}">
+            </div>
+        
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+		var $animation_elements = $('.animation-element');
+		var $window = $(window);
+
+		function check_if_in_view() {
+		  var window_height = $window.height();
+		  var window_top_position = $window.scrollTop();
+		  var window_bottom_position = (window_top_position + window_height);
+		 
+		  $.each($animation_elements, function() {
+			var $element = $(this);
+			var element_height = $element.outerHeight();
+			var element_top_position = $element.offset().top;
+			var element_bottom_position = (element_top_position + element_height);
+		 
+			//check to see if this current container is within viewport
+			if ((element_bottom_position >= window_top_position) &&
+				((element_top_position+60) <= window_bottom_position)) {
+			  $element.addClass('in-view');
+			} else {
+//			  $element.removeClass('in-view');
+			}
+		  });
+		}
+
+		$window.on('scroll resize', check_if_in_view);
+		$window.trigger('scroll');
+
+		$(document).ready(function() {
+			var stickyname = '.header-bottom';
+		   	var stickyNavTop = $(stickyname).offset().top;
+		   	var stickyNav = function(){
+			    var scrollTop = $(window).scrollTop(); 
+
+			    if (scrollTop > stickyNavTop) { 
+			        $(stickyname).addClass('sticky');
+			    } else {
+//			        $(stickyname).removeClass('sticky'); 
+			    }
+			};
+			stickyNav();
+			$(window).scroll(function() {
+				stickyNav();
+			});
+		});
+		
+		
+		
+		
+		</script>
+{{/partial}}
+{{> layout/home-base}}

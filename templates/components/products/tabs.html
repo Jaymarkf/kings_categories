@@ -1,0 +1,44 @@
+<!-- <ul class="tabs" data-tab role="tablist">
+
+        <li class="tab is-active" role="presentational">
+            <a class="tab-title" href="#tab-related" role="tab" tabindex="0" aria-selected="true" controls="tab-related">{{lang 'products.related_products'}}</a>
+        </li>
+
+
+        <li class="tab{{#unless product.related_products}} is-active{{/unless}}" role="presentational">
+            <a class="tab-title" href="#tab-similar" role="tab" tabindex="0" aria-selected="{{#if product.related_products}}false{{else}}true{{/if}}" controls="tab-similar">Recently Viewed</a>
+        </li>
+
+</ul> -->
+<h1>Related Products</h1>
+<div class="tabs-content-custom">
+
+    <div role="tabpanel" aria-hidden="false" class="tab-content has-jsContent is-active" id="tab-related">
+        {{#if settings.data_tag_enabled}}
+            {{> components/products/carousel products=product.related_products columns=4 list="Related Products"}}
+        {{else}}
+            {{> components/products/carousel products=product.related_products columns=4}}
+        {{/if}}
+    </div>
+   
+</div>
+<br>
+<h1>Recently Viewed Products</h1>
+<div class="tabs-contents-custom">
+    <div role="tabpanel-custom" class="tab-content-custom" id="tab-similar-custom">
+            {{> components/products/carousel products=product.similar_by_views columns=4 list="Customers Also Viewed"}}
+    </div>
+
+</div>
+<style>
+   .card-img-container img{
+       padding:15%;
+   }
+   .card-figure{
+       border: none;
+   }
+   .card .card-body{
+       padding-left:15%;
+       padding-right:15%;
+   }
+</style>
