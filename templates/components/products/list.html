@@ -12,4 +12,50 @@
                 $(this).html( $(this).html().split('Description').join('<label class="summary-description"><strong>Description</strong></label><br>'));
             }
         });
+
+</script>
+
+<script src ="https://form.jotform.com/static/feedback2.js" type="text/javascript"></script><script type="text/javascript">
+  // let product = '';
+  // let model = '';
+
+  // $('.btn-ask').on('click',function(){
+
+  //    product = $(this).attr('product-name');
+  //    model = $(this).attr('model');
+
+  
+
+  // });
+  // for category jotform 
+//remove the attribute and add it again to refresh the element everytime the jotform was close
+    $('.btn-ask').on('click',function(){
+      $('.btn-ask').removeAttr('requested');
+      $(this).attr('requested','');
+    });
+
+
+  //get the value of button and give it to jotform after click before closing the jotform.
+  var jotform = new JotformFeedback({
+  formId: '201911524199051',
+  base: 'https://form.jotform.com/',
+  windowTitle: 'Request Quotation',
+  background: '#d22229',
+  fontColor: '#FFFFFF',
+  type: '0',
+  iframeParameters:
+  {
+    'product_details[first]' : function(){
+        return $('[requested]').attr('product_name');
+    },
+    'product_details[last]'  : function(){
+        return $('[requested]').attr('model');
+    }
+  },
+  height: 600,
+  width: 600,
+  openOnLoad: false
+  });
+  
+  
 </script>

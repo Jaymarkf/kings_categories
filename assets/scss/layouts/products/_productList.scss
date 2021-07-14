@@ -228,6 +228,7 @@
     .list-action-container{
         padding:2rem;
         border:1px solid #e2e2e2;
+        text-align:center;
     }
     @include breakpoint("large") {
         vertical-align: middle;

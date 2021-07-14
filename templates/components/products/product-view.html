@@ -275,13 +275,22 @@
 				background: '#d22229',
 				fontColor: '#FFFFFF',
 				type: '0',
+				iframeParameters:
+				{
+				'product_details[first]' : function(){
+				return $('#product_ask').attr('product_name');
+				},
+				'product_details[last]'  : function(){
+				return $('#product_ask').attr('model');
+				}
+				},
 				height: 600,
 				width: 600,
 				openOnLoad: false
 				});
 			</script>
-		<a class="btn lightbox-201911524199051 ask-for-price-overlay" style="margin-top: 16px">
-			ASK FOR PRICE
+			<a id="product_ask" class="btn lightbox-201911524199051 ask-for-price-overlay" style="margin-top: 16px" product_name="{{product.title}}" model="{{product.sku}}">
+				ASK FOR PRICE
 			</a>
 			<!--<a class="ask-for-price-overlay">ASK FOR PRICE</a>-->
 			
