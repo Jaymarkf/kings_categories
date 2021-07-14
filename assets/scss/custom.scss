@@ -2643,21 +2643,20 @@ img.lazyautosizes.ls-is-cached.lazyloaded {
 	.navPages-item{
 		.navPages-action{
 			margin-bottom:3px;
-            margin-left:10%;
-            margin-right:10%;
 			&:hover{ margin-bottom:0px; }
 			span{ 
 				white-space:nowrap;
 				white-space: pre;
                 font-size: 2.5vw;
                 color:#333333;
-                @include breakpoint("medium"){
+               @media(min-width:768px){
                     color:white;
                     white-space:nowrap;
                     white-space: pre;
                     font-size: 0.9vw;
                     color:#333333;
-                }
+                // }
+               }
 			}
 		}
 	}
@@ -2728,6 +2727,7 @@ img.lazyautosizes.ls-is-cached.lazyloaded {
 		display: flex;
 		justify-content: center;
 		flex-flow: wrap;
+    
 		
 	}
 }
@@ -2751,8 +2751,4 @@ img.lazyautosizes.ls-is-cached.lazyloaded {
         }
     }
    
-}
-
-.fa-chevron-down{
-    margin-right:16px;
 }
