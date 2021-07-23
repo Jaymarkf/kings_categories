@@ -87,11 +87,11 @@
 			<div class="listItem-actions">
 				<div class="list-action-container">	
 					
-					<a class="btn lightbox-201911524199051 ask-for-price-overlay btn-ask" style="margin-top: 16px" product_name="{{name}}" model="{{sku}}">
+					<a class="btn lightbox-201911524199051 button button--small btn-ask" style="font-size:14px;" product_name="{{name}}" model="{{sku}}">
 						ASK FOR PRICE
 					</a>
 
-					<a href="{{add_to_wishlist_url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small sub-button">{{lang 'products.wishlist'}}</a>
+					<a href="{{add_to_wishlist_url}}" style="color:red" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small sub-button">{{lang 'products.wishlist'}}</a>
 					{{#if show_compare}}
 					<label class="button button--small xx" for="compare-{{id}}" style="padding:0 !important;">
 						<div style="display:flex;justify-content: center;align-items:center;">

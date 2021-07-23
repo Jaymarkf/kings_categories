@@ -1,68 +1,178 @@
 {{#partial "page"}}
+<style>
+    .lbl{
+        font-size:16px;
+    }
+    .get-direction{
+        background-color:#dddddd;
+    }
+    .get-direction-label{
 
+    }
+    .border-card{
+        border: 1px solid #dddddd;
+    }
+
+    .border-card:hover{
+        border:1px solid red;
+    }
+    .border-card:hover .get-direction{
+        background-color:red !important;
+    }
+    .border-card:hover .get-direction-label{
+        color:white;
+    }
+    .map{
+        display:none;
+        float:right;
+        width:100%;
+        position:relative;
+        height:100%;
+    }
+</style>
 <main class="page cms">
-    
-   <div class="about-banner">
-        <h1 class="page-heading">{{ page.title }}</h1>
+    <div class="row ml-5 pb-3">
+        <h1>STORE LOCATIONS</h1>
     </div>
+    <div class="page-content content p-0">
+        <div class="col-md-12 px-5 pb-5">
+            <div class="row d-flex flex-wrap">
+                <div class="col-md-8 px-0">
 
-    <div class="page-content content">
-        <h1>Visit one of our 5 convenient locations</h1>
-       
-        <div class="location-content">
-          <table>
-            <tr>
-            <th>Store</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Store Hours</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Evansville</td>
-                <td>5010 Vogel Road Evansville, IN 47715</td>
-                <td>Phone: 812-473-5464</td>
-                <td>Monday - Saturday: 10am to 7pm</br>
-                    Sunday: 12pm to 5pm
-                </td>
-                <td><a class="directions-button" href="http://maps.google.com/?q=5010 Vogel Road Evansville, IN 47715">GET DIRECTIONS</a></td>
-            </tr>
-               <tr>
-                   
-                <td>Madisonville</td>
-                <td>1141 S Main Street Madisonville, KY 42431</td>
-                <td>Phone: 270-821-0516</td>
-                <td>Monday - Friday: 9am to 6pm</br>
-                    Saturday: 9am to 5pm</br>
-                    Sunday: Closed
-                </td>
-                <td><a class="directions-button" href="http://maps.google.com/?q=1141 S Main Street Madisonville, KY 42431">GET DIRECTIONS</a></td>
-            </tr>
-               <tr>
-                <td>Owensboro</td>
-                <td>410 Southtown Boulevard Suite 11 Owensboro, KY 42301</td>
-                <td>Phone: 270-683-1005</td>
-                <td>Monday - Saturday: 10am to 6pm</br>
-                    Sunday: 12pm to 5pm
-                </td>
-                <td><a class="directions-button" href="http://maps.google.com/?q=410 Southtown Boulevard Suite 11 Owensboro, KY 42301">GET DIRECTIONS</a></td>
-            </tr>
-               <tr>
-                <td>Princeton</td>
-                <td>755 U.S. Hwy 62 West Princeton, KY 42445</td>
-                <td>Phone: 270-365-3288</td>
-                <td>Monday - Saturday: 10am to 6pm</br>
-                    Sunday: Closed
-                </td>
-                <td><a class="directions-button" href="http://maps.google.com/?q=755 U.S. Hwy 62 West Princeton, KY 42445">GET DIRECTIONS</a></td>
-            </tr>
-         </table>
+                    <div class="row d-flex flex-wrap">  
+                        <div class="col-md-6 pr-3">
+                            <a id="evansville">
+                                <div class="row border-card" data-id="evansville" style=border-radius:4px;">
+                                    <div class="col-md-6 p-0 d-flex align-items-center"><img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/display-evansville.png?t=1626672010&_gl=1*1qvgtgy*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYyNjY3MDE4Ny4yMi4xLjE2MjY2NzIwMDIuMjM." alt=""></div>
+                                    <div class="col-md-6 d-flex flex-column p-0">
+                                        <div class="d-flex justify-content-center flex-column h-100">
+                                            <span class="text-danger d-block lbl pl-3">Evansville</span>
+                                            <span class="d-block lbl pl-3">Monday - Saturday</span>
+                                            <span class="d-block lbl pl-3">10am to 7pm</span>
+                                            <span class="d-block lbl pl-3">Sunday: 12pm to 5pm</span>
+                                            <span class="d-block mt-2 lbl pl-3">5010 Vogel Road Evansville,</span>
+                                            <span class="d-block lbl pl-3">IN 47715</span>
+                                            <span class="d-block mt-3 lbl pl-3">Phone: 812-473-5464</span>
+                                        </div>
+                                        <div class="row get-direction" style="margin-top:auto;width:100%;text-align:center;justify-content: center;padding:10px;">
+                                            <span class="get-direction-label">Get Direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 pl-3">
+                            <a id="owensboro">
+                                <div class="row border-card" data-id="owensboro" style="border-radius:4px;">
+                                    <div class="col-md-6 p-0 d-flex align-items-center"><img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/display-owensboro.png?t=1626676307&_gl=1*1cjq90r*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYyNjY3NjI4MC4yMy4xLjE2MjY2NzYyOTQuNDY." alt=""></div>
+                                    <div class="col-md-6 d-flex flex-column p-0">
+                                        <div class="d-flex justify-content-center flex-column h-100">
+                                            <span class="text-danger d-block lbl pl-3">Owensboro</span>
+                                            <span class="d-block lbl pl-3">Monday - Saturday</span>
+                                            <span class="d-block lbl pl-3">10am to 7pm</span>
+                                            <span class="d-block lbl pl-3">Sunday: 12pm to 5pm</span>
+                                            <span class="d-block mt-2 lbl pl-3">410 Southtown Boulevard</span>
+                                            <span class="d-block lbl pl-3">Suite 11 Owensboro,</span>
+                                            <span class="d-block lbl pl-3">KY 42301</span>
+                                            <span class="d-block mt-3 lbl pl-3">Phone: 270-683-1005</span>
+                                        </div>
+                                        <div class="row get-direction" style="margin-top:auto;width:100%;text-align:center;justify-content: center;padding:10px;">
+                                            <span class="get-direction-label">Get Direction</span>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex flex-wrap mt-5">  
+                        <div class="col-md-6 pr-3">
+                            <a id="madisonville">
+                                <div class="row border-card" data-id="madisonville" style="border-radius:4px;">
+                                    <div class="col-md-6 p-0 d-flex align-items-center"><img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/display-madisonville.png?t=1626677469&_gl=1*1wgt2qp*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYyNjY3NjI4MC4yMy4xLjE2MjY2NzYyOTQuNDY." alt=""></div>
+                                    <div class="col-md-6 d-flex flex-column p-0">
+                                        <div class="d-flex justify-content-center flex-column h-100">
+                                            <span class="text-danger d-block lbl pl-3">Madisonville</span>
+                                            <span class="d-block lbl pl-3">Monday - Friday: 9am to 6pm</span>
+                                            <span class="d-block lbl pl-3">Saturday: 9am to 5pm</span>
+                                            <span class="d-block lbl pl-3">Sunday: Closed</span>
+                                            <span class="d-block mt-2 lbl pl-3">1141 S Main Street</span>
+                                            <span class="d-block lbl pl-3">Madisonville, KY 42431</span>
+                                            <span class="d-block mt-3 lbl pl-3">Phone: 270-821-0516</span>
+                                        </div>
+                                        <div class="row get-direction" style="margin-top:auto;width:100%;text-align:center;justify-content: center;padding:10px;">
+                                            <span class="get-direction-label">Get Direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 pl-3">
+                            <a id="princeton">
+                                <div class="row border-card" data-id="priceton" style="border-radius:4px;">
+                                    <div class="col-md-6 p-0 d-flex align-items-center"><img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/display-princeton.png?t=1626677489&_gl=1*k4mrj1*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYyNjY3NjI4MC4yMy4xLjE2MjY2Nzc4NDguNTU." alt=""></div>
+                                    <div class="col-md-6 d-flex flex-column p-0">
+                                        <div class="d-flex justify-content-center flex-column h-100">
+                                            <span class="text-danger d-block lbl pl-3">Princeton</span>
+                                            <span class="d-block lbl pl-3">Monday - Saturday:</span>
+                                            <span class="d-block lbl pl-3">10am to 6pm</span>
+                                            <span class="d-block lbl pl-3">Sunday: Closed</span>
+                                            <span class="d-block mt-2 lbl pl-3">755 U.S. Hwy 62</span>
+                                            <span class="d-block lbl pl-3">West Princeton, KY 42445</span>
+                                            <span class="d-block mt-3 lbl pl-3">Phone: 270-365-3288</span>
+                                        </div>
+                                        <div class="row get-direction" style="margin-top:auto;width:100%;text-align:center;justify-content: center;padding:10px;">
+                                            <span class="get-direction-label">Get Direction</span>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <iframe class="map" id="evansville_map"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.508873688953!2d-87.49206518467619!3d37.98858937972116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886e2b0f5680e89b%3A0xfe1a5b3b2d671e48!2s5010%20Vogel%20Rd%2C%20Evansville%2C%20IN%2047715%2C%20USA!5e0!3m2!1sen!2sph!4v1626678822478!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe class="map" id="madisonville_map"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.3023424632997!2d-87.50811248469562!3d37.31166537984638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886fffac8ef277d7%3A0x865b2dce88f47f23!2s1141%20S%20Main%20St%2C%20Madisonville%2C%20KY%2042431%2C%20USA!5e0!3m2!1sen!2sph!4v1626678889647!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe class="map" id="owensboro_map"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.9507194966545!2d-87.12132948468391!3d37.720834579769324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886fbbb762d3bb3f%3A0x7035147dd4e1d950!2s410%20Southtown%20Blvd%20%2311%2C%20Owensboro%2C%20KY%2042303%2C%20USA!5e0!3m2!1sen!2sph!4v1626678922110!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe class="map" id="priceton_map"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3181.8639808349476!2d-87.90770208470137!3d37.1083551798862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887a99d86b625787%3A0x1e04f7fe3a1b6f48!2s755%20US-62%2C%20Princeton%2C%20KY%2042445%2C%20USA!5e0!3m2!1sen!2sph!4v1626678952005!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
         </div>
+           
     </div>
 
 
 </main>
+<script>
+    $('.border-card').click(function(){
+            var flag = $(this).attr("data-id");
 
+            if(flag == 'evansville'){
+                $('#evansville_map').css('display','block');
+                $('#owensboro_map').css('display','none');
+                $('#madisonville_map').css('display','none');
+                $('#priceton_map').css('display','none');
+            }else if(flag == 'owensboro'){
+                $('#evansville_map').css('display','none');
+                $('#owensboro_map').css('display','block');
+                $('#madisonville_map').css('display','none');
+                $('#priceton_map').css('display','none');
+            }else if(flag == 'madisonville'){
+                $('#madisonville_map').css('display','block');
+                $('#owensboro_map').css('display','none');
+                $('#evansville_map').css('display','none');
+                $('#priceton_map').css('display','none');
+            }else if(flag == 'priceton'){
+                $('#priceton_map').css('display','block');
+                $('#owensboro_map').css('display','none');
+                $('#evansville_map').css('display','none');
+                $('#madisonville_map').css('display','none');
+            }
+    });
+</script>
 {{/partial}}
 
 {{> layout/cms-base}}

@@ -24,6 +24,9 @@
 	.productview-images-custom .productView-image{
 		border:none;
 	}
+	#wishlist-dropdown.is-open{
+		left:0 !important;
+	}
 </style>
 <div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
 	
@@ -277,10 +280,10 @@
 				type: '0',
 				iframeParameters:
 				{
-				'product_details[first]' : function(){
+				'productDetails' : function(){
 				return $('#product_ask').attr('product_name');
 				},
-				'product_details[last]'  : function(){
+				'Model_No'  : function(){
 				return $('#product_ask').attr('model');
 				}
 				},
@@ -289,9 +292,11 @@
 				openOnLoad: false
 				});
 			</script>
-			<a id="product_ask" class="btn lightbox-201911524199051 ask-for-price-overlay" style="margin-top: 16px" product_name="{{product.title}}" model="{{product.sku}}">
+			<a id="product_ask" class="btn lightbox-201911524199051 button button--small" style="margin-top: 16px;width:94%;margin-bottom:5px;" product_name="{{product.title}}" model="{{product.sku}}">
 				ASK FOR PRICE
 			</a>
+			{{> components/common/wishlist-dropdown}}
+			<div style="margin-bottom:2%"></div>
 			<!--<a class="ask-for-price-overlay">ASK FOR PRICE</a>-->
 			
 	{{else}}

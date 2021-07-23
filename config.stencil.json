@@ -2,7 +2,9 @@
   "customLayouts": {
     "brand": {},
     "category": {},
-    "page": {},
+    "page": {
+      "location.html" : "/locations"
+    },
     "product": {}
   },
   "normalStoreUrl": "https://kingsgreatbuys.com",
